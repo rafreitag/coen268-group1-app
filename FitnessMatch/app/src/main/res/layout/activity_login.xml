@@ -22,7 +22,7 @@
             android:textSize="36sp" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/et_check_email"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
@@ -30,7 +30,7 @@
             android:inputType="textEmailAddress" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/et_check_password"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -38,7 +38,7 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/btn_login2"
+            android:id="@+id/btn_check_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
