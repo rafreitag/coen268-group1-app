@@ -7,26 +7,26 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class login_page extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    public static String USERNAME = "test";
+    public static String EMAIL = "test@gmail.com";
     public static String PASSWORD = "Password1";
 
-    EditText username;
+    EditText email;
     EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
 
-        username = findViewById(R.id.username);
+        email = findViewById(R.id.email);
         password = findViewById(R.id.password);
     }
 
     public void check_credentials(View view)
     {
-        if(!username.getText().toString().equals(USERNAME) || !password.getText().toString().equals(PASSWORD)) {
+        if(!email.getText().toString().equals(email) || !password.getText().toString().equals(PASSWORD)) {
             Toast.makeText(getApplicationContext(), "Incorrect Username or Password", Toast.LENGTH_LONG).show();
             return;
         }
