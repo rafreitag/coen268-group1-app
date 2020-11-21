@@ -96,10 +96,10 @@ public class LoginActivity extends AppCompatActivity {
 //        } else {
 //            // login
 //            // start second activity
-//            Log.i(TAG, "Successfully logged in as " + name);
-//            Intent intent = new Intent(this, HomeActivity.class);
-//            intent.putExtra("Name", name);
-//            startActivity(intent);
+            // Log.i(TAG, "Successfully logged in as " + name);
+            Intent intent = new Intent(this, HomeActivity.class);
+            // intent.putExtra("Name", name);
+            startActivity(intent);
 //        }
     }
 
