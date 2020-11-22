@@ -43,6 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void add_user(View view) {
+
         String name = et_name.getText().toString();
         String email = et_email.getText().toString();
         String password = et_password.getText().toString();
@@ -64,6 +65,10 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(this, "Password mismatch.", Toast.LENGTH_SHORT).show();
             return;
         }
+        if(password.length() < 6){
+            Toast.makeText(this, "Password must be at least 6 characters.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         progressBar.setVisibility(view.VISIBLE);
 
         // Create user in Firebase
@@ -79,7 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
                     Toast.makeText(SignUpActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-//                    progressBar.setVisibility(view.INVISIBLE);
+                    progressBar.setVisibility(view.INVISIBLE);
                 }
             }
         });
