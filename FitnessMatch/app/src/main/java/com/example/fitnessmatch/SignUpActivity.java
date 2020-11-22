@@ -18,6 +18,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Hashtable;
 
 public class SignUpActivity extends AppCompatActivity {
     public final static String TAG = "SignUpActivity";
@@ -77,8 +81,19 @@ public class SignUpActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     FirebaseUser user = mAuth.getCurrentUser();
-                    // NEEDS TO CHANGE... THIS IS JUST FOR TESTING PURPOSES... THIS SHOULD PROBABLY INSTEAD ACTIVATE AN ACTIVITY
-                    setContentView(R.layout.find);
+
+                    // Write to DB
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference();
+                    DatabaseReference usersRef = myRef.child("users").child(user.getUid());
+                    // Create dict with profile info to store easily
+                    Hashtable<String, String> my_dict = new Hashtable<String, String>();
+                    my_dict.put("name", name);
+                    my_dict.put("email", email);
+                    usersRef.child("profile").setValue(my_dict);
+
+                    Intent a = new Intent(SignUpActivity.this, HomeActivity.class);
+                    startActivity(a);
                 }
                 else{
                     // If sign in fails, display a message to the user.
