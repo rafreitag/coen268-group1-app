@@ -1,5 +1,6 @@
 package com.example.fitnessmatch;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity {
     private String name = "";
@@ -30,42 +32,57 @@ public class HomeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         welcome = findViewById(R.id.tv_welcome);
-//        name = getIntent().getStringExtra("Name");
-//        welcome.setText("Welcome, " + name);
         FirebaseUser user = mAuth.getCurrentUser();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("users/" + user.getUid());
-        myRef.equalTo("profile").addChildEventListener(new ChildEventListener() {
+
+        // Retrieve current 'profile' information of user (name and email)
+        DatabaseReference myProfile = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("profile");
+        myProfile.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
-                Toast.makeText(HomeActivity.this, snapshot.getKey(), Toast.LENGTH_LONG).show();
-//                System.out.println(snapshot.getKey());
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Profile profile = snapshot.getValue(Profile.class);
+                welcome.setText("Welcome, " + profile.getName());
             }
 
             @Override
-            public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(HomeActivity.this, "Read failed. Please retry login", Toast.LENGTH_LONG).show();
+                // Logout User
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        // Retrieve current 'preferences' of user
+        DatabaseReference myPreferences = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("preferences");
+        myPreferences.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Preferences preferences = snapshot.getValue(Preferences.class);
+                // Just a test to make sure that I am receiving the information correctly
+                Toast.makeText(HomeActivity.this, preferences.getOther_activity(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onChildRemoved(DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(HomeActivity.this, "Read failed. Please retry login", Toast.LENGTH_LONG).show();
+                // Logout User
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
 
     public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    // Start find process
+    public void find(View view){
+        Intent intent = new Intent(this, FindActivity.class);
         startActivity(intent);
     }
 }

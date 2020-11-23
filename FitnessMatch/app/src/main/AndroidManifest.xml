@@ -20,6 +20,7 @@
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".FindActivity"></activity>
+        <activity android:name=".Find2Activity"></activity>
     </application>
 
 </manifest>

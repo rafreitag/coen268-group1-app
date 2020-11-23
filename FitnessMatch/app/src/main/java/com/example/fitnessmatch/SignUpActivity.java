@@ -82,16 +82,23 @@ public class SignUpActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     FirebaseUser user = mAuth.getCurrentUser();
 
-                    // Write to DB
+                    // Get correct DB reference
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference();
                     DatabaseReference usersRef = myRef.child("users").child(user.getUid());
-                    // Create dict with profile info to store easily
-                    Hashtable<String, String> my_dict = new Hashtable<String, String>();
-                    my_dict.put("name", name);
-                    my_dict.put("email", email);
-                    usersRef.child("profile").setValue(my_dict);
 
+                    // Create Profile object to add to Firebase (name and email that the user inputted when signing up)
+                    Profile profile = new Profile(name, email);
+                    // Add Profile to Firebase
+                    usersRef.child("profile").setValue(profile);
+
+                    // Create Preferences object to add to Firebase
+                    // This is just a default Prefernces object that will be overwritten when a user goes through and fills out all of their preferences
+                    Preferences preferences = new Preferences();
+                    // Add preferences to Firebase
+                    usersRef.child("preferences").setValue(preferences);
+
+                    // Go to home page
                     Intent a = new Intent(SignUpActivity.this, HomeActivity.class);
                     startActivity(a);
                 }

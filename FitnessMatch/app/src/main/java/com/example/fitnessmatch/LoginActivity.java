@@ -57,10 +57,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+                            // Sign in success, go to home page
                             Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Intent a = new Intent(LoginActivity.this, FindActivity.class);
+                            Intent a = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(a);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -108,9 +107,4 @@ public class LoginActivity extends AppCompatActivity {
         Intent a = new Intent(this, SignUpActivity.class);
         startActivity(a);
     }
-
-    //public void page2(View view)
-//    {
-//        setContentView(R.layout.find2);
-//    }
 }

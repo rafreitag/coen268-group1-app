@@ -25,34 +25,35 @@
         tools:ignore="MissingConstraints">
 
         <RadioButton
+            android:id="@+id/rb_pref_time_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="morning (before 11 am)"
             android:textSize="12sp" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/rb_pref_time_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="midday (11 am - 2 pm)"
             android:textSize="12sp" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/rb_pref_time_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="afternoon (2 - 5 pm)"
             android:textSize="12sp" />
 
         <RadioButton
-            android:id="@+id/radioButton7"
+            android:id="@+id/rb_pref_time_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="evening (5 - 8 pm)"
             android:textSize="12sp" />
 
         <RadioButton
-            android:id="@+id/radioButton8"
+            android:id="@+id/rb_pref_time_5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="late (8 - 12 pm)"
@@ -74,12 +75,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="What is your fitness level?"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
-        tools:text="What is your fitness level?" />
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -89,20 +89,21 @@
         tools:ignore="MissingConstraints">
 
         <RadioButton
+            android:id="@+id/rb_level_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="beginner"
             android:textSize="12sp" />
 
         <RadioButton
-            android:id="@+id/radioButton9"
+            android:id="@+id/rb_level_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="intermediate"
             android:textSize="12sp" />
 
         <RadioButton
-            android:id="@+id/radioButton10"
+            android:id="@+id/rb_level_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="advanced"
@@ -116,7 +117,18 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:onClick="find_matches"
         android:text="Find me a partner!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintTop_toTopOf="@+id/button2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
