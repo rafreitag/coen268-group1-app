@@ -12,38 +12,35 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
 public class LocationActivity extends AppCompatActivity implements LocationListener {
 
-    private Button btn_find_location, btn_next;
     private EditText et_address;
 
-//    //From -> the first coordinate from where we need to calculate the distance
-//    private double fromLatitude = 37.341;
-//    private double fromLongitude = -121.94;
-//
-//    //To -> the second coordinate to where we need to calculate the distance
-//    private double toLatitude = 37.335;
-//    private double toLongitude = -121.881;
-
     private static final int REQUEST_LOCATION = 1;
-    protected LocationManager locationManager;
-    Location location; // location
-    double latitude, longitude;
+    private LocationManager locationManager;
+    private Location location; // location
+    private double latitude, longitude;
 
-    Geocoder geocoder;
-    List<Address> addresses;
+    private Geocoder geocoder;
+    private List<Address> addresses;
 
+    private Preferences preferences;
+
+    private FirebaseAuth mAuth;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,24 +49,24 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         setContentView(R.layout.activity_location);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        btn_find_location = findViewById(R.id.btn_find_location);
-        btn_next = findViewById(R.id.btn_next);
+        mAuth = FirebaseAuth.getInstance();
+
         et_address = findViewById(R.id.et_address);
 
-        btn_find_location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                findAddressFromLocation();
-            }
-        });
+        preferences = new Preferences();
+    }
 
-        btn_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nextFragment();
-            }
-        });
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser == null){
+            Toast.makeText(this, "Not logged in", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -104,7 +101,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         Log.i("LocationFragment", "Latitude: " + lat + "Longitude: " + lng);
     }
 
-    public void findAddressFromLocation() {
+    public void findAddressFromLocation(View view) {
         getLocation();
 
         // Get address from location
@@ -126,24 +123,6 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         et_address.setText(address);
     }
 
-//    public double getMiles(float i) {
-//        return i * 0.000621371192;
-//    }
-//
-//    public void calculateDistance() {
-//        Location loc1 = new Location("");
-//        loc1.setLatitude(fromLatitude);
-//        loc1.setLongitude(fromLongitude);
-//        Location loc2 = new Location("");
-//        loc2.setLatitude(toLatitude);
-//        loc2.setLongitude(toLongitude);
-//        float distanceInMeters = loc1.distanceTo(loc2);
-//        double distanceInMiles = getMiles(distanceInMeters);
-//
-//        //Displaying the distance
-//        Toast.makeText(this, String.valueOf(distanceInMiles+" Miles"), Toast.LENGTH_SHORT).show();
-//    }
-
     public void getLocationFromAddress(String strAddress){
         getLocation();
         Geocoder coder = new Geocoder(this);
@@ -162,7 +141,12 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         }
     }
 
-    public void nextFragment() {
+    public void updateLocation() {
+        preferences.setLatitude(latitude);
+        preferences.setLongitude(longitude);
+    }
+
+    public void nextPage(View view) {
         if(location == null) {
             String address = et_address.getText().toString();
             getLocationFromAddress(address);
@@ -172,8 +156,12 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         }
 
         Log.i("LocationFragment", "Next fragment");
-        Intent intent = new Intent(this, FindActivity.class);
-        startActivity(intent);
+        Intent a = new Intent(this, FindActivity.class);
+        // Update preferences object with location
+        updateLocation();
+        // Sending this preferences object to the find page so that none of the choices are lost
+        a.putExtra("preferences", (Serializable) preferences);
+        startActivity(a);
     }
 }
 

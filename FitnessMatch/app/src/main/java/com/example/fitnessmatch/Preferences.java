@@ -6,6 +6,7 @@ public class Preferences implements Serializable{
 
     private boolean hiking, walking, yoga, pilates, weight_lifting, biking, circuit_training, swimming, basketball, volleyball, soccer, ultimate_frisbee, running;
     private int frequency, pref_time, level;
+    private double latitude, longitude;
     private String other_activity;
 
     public Preferences(){
@@ -25,10 +26,12 @@ public class Preferences implements Serializable{
         this.frequency = 0;
         this.pref_time = 0;
         this.level = 0;
+        this.latitude = 0;
+        this.longitude = 0;
         this.other_activity = "";
     }
 
-    public Preferences(boolean hiking, boolean walking, boolean yoga, boolean pilates, boolean weight_lifting, boolean biking, boolean circuit_training, boolean swimming, boolean basketball, boolean volleyball, boolean soccer, boolean ultimate_frisbee, boolean running, int frequency, int pref_time, int level, String other_activity) {
+    public Preferences(boolean hiking, boolean walking, boolean yoga, boolean pilates, boolean weight_lifting, boolean biking, boolean circuit_training, boolean swimming, boolean basketball, boolean volleyball, boolean soccer, boolean ultimate_frisbee, boolean running, int frequency, int pref_time, int level, double latitude, double longitude, String other_activity) {
         this.hiking = hiking;
         this.walking = walking;
         this.yoga = yoga;
@@ -45,6 +48,8 @@ public class Preferences implements Serializable{
         this.frequency = frequency;
         this.pref_time = pref_time;
         this.level = level;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.other_activity = other_activity;
     }
 
@@ -166,6 +171,22 @@ public class Preferences implements Serializable{
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public double getUserLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getUserLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public String getOther_activity() {

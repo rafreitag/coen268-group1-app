@@ -39,7 +39,12 @@ public class FindActivity extends AppCompatActivity {
         setContentView(R.layout.find);
         mAuth = FirebaseAuth.getInstance();
 
-        preferences = new Preferences();
+//        preferences = new Preferences();
+
+        // Receive intent passed in from FindActivity
+        Intent a = getIntent();
+        // Receive preferences object passed in from LocationActivity (includes latitude and longitude)
+        preferences = (Preferences) a.getSerializableExtra("preferences");
 
         // How do you like working out?
         running = findViewById(R.id.cb_running);
