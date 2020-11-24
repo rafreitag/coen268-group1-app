@@ -22,18 +22,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".LoginActivity"
+            android:label="@string/login_name"
+            ></activity>
+        <activity android:name=".SignUpActivity"
+            android:label="@string/signup_name"
+            ></activity>
+        <activity android:name=".HomeActivity"
+            android:label="@string/app_name"
+            ></activity>
         <activity android:name=".LocationActivity"
-            android:parentActivityName=".HomeActivity">
+            android:parentActivityName=".HomeActivity"
+            android:label="@string/find_name"
+            >
         </activity>
-        <activity android:name=".FindActivity"></activity>
-        <activity android:name=".Find2Activity"></activity>
-        <activity android:name=".EditProgress"></activity>
-        <activity android:name=".AddProgress" ></activity>
+        <activity android:name=".FindActivity"
+            android:label="@string/find_name"
+            ></activity>
+        <activity android:name=".Find2Activity"
+            android:label="@string/find_name"
+            ></activity>
+        <activity android:name=".EditProgress"
+            android:label="@string/edit_name"
+            ></activity>
+        <activity android:name=".AddProgress"
+            android:label="@string/add_name"
+            ></activity>
         <activity android:name=".ProgressMainActivity"
-            android:parentActivityName=".HomeActivity">
+            android:parentActivityName=".HomeActivity"
+            android:label="@string/progress_name"
+            >
         </activity>
 
 

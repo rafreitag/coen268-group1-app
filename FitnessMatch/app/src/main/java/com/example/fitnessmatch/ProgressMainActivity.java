@@ -87,9 +87,12 @@ public class ProgressMainActivity extends AppCompatActivity {
         String selection = "=?";
         String[] selectionArg = new String[]{mUser};
 
+        String orderBy = "CASE " + UserGoalContract.Goal.STATUS +
+                " WHEN 'in progress' THEN 0 WHEN 'todo' THEN 1 WHEN 'completed' THEN 2 END";
+
         Cursor cursor = db.query(UserGoalContract.Goal.TABLE_NAME,null,
                 UserGoalContract.Goal.USER + "=?", new String[]{mUser}, null, null,
-                UserGoalContract.Goal.STATUS);
+                orderBy);
 
         String result = "";
         while(cursor.moveToNext()){
