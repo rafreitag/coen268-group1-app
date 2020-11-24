@@ -7,13 +7,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class UserGoalDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "progress.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String CREATE_TABLE = "CREATE TABLE " +
             UserGoalContract.Goal.TABLE_NAME + "(" +
-            UserGoalContract.Goal._ID  + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            UserGoalContract.Goal._ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             UserGoalContract.Goal.GOAL + " TEXT NOT NULL, " +
-            UserGoalContract.Goal.STATUS + " TEXT NOT NULL" +
+            UserGoalContract.Goal.STATUS + " TEXT NOT NULL, " +
+            UserGoalContract.Goal.USER + " TEXT NOT NULL" +
             ")";
+
 
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS "+
             UserGoalContract.Goal.TABLE_NAME;

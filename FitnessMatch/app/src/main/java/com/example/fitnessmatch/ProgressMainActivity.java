@@ -32,6 +32,8 @@ public class ProgressMainActivity extends AppCompatActivity {
     List<String> mGoals = new ArrayList<String>();
     List<String> mStatuses = new ArrayList<String>();
     List<Integer> mImages = new ArrayList<Integer>();
+    List<Integer> mIDs = new ArrayList<Integer>();
+    String mUser = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +46,16 @@ public class ProgressMainActivity extends AppCompatActivity {
         mGoals.clear();
         mStatuses.clear();
         mImages.clear();
+
+        Intent intent = getIntent();
+        mUser = intent.getStringExtra("user");
+
         getAllStudentInfo();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ProgressListAdapter progressListAdapter = new ProgressListAdapter(this, mGoals.toArray(new String[mGoals.size()])
-                , mStatuses.toArray(new String[mStatuses.size()]), mImages.toArray(new Integer[mImages.size()]));
+                , mStatuses.toArray(new String[mStatuses.size()]), mImages.toArray(new Integer[mImages.size()]), mUser );
         listView.setAdapter(progressListAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -78,15 +84,20 @@ public class ProgressMainActivity extends AppCompatActivity {
         UserGoalDBHelper dbHelper = new UserGoalDBHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
+        String selection = "=?";
+        String[] selectionArg = new String[]{mUser};
+
         Cursor cursor = db.query(UserGoalContract.Goal.TABLE_NAME,null,
-                null, null, null, null,
+                UserGoalContract.Goal.USER + "=?", new String[]{mUser}, null, null,
                 UserGoalContract.Goal.STATUS);
 
         String result = "";
         while(cursor.moveToNext()){
             String goal = cursor.getString(cursor.getColumnIndex(UserGoalContract.Goal.GOAL));
             String status = cursor.getString(cursor.getColumnIndex(UserGoalContract.Goal.STATUS));
+            int id = cursor.getInt(cursor.getColumnIndex(UserGoalContract.Goal._ID));
 
+            mIDs.add(id);
             mGoals.add(goal);
             mStatuses.add(status);
         }
@@ -117,6 +128,8 @@ public class ProgressMainActivity extends AppCompatActivity {
 
     private void openAddProgressActivity() {
         Intent intent = new Intent(this, AddProgress.class);
+        intent.putExtra("user", mUser);
+
         startActivity(intent);
     }
 
@@ -124,6 +137,8 @@ public class ProgressMainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EditProgress.class);
         intent.putExtra("goal", mGoals.get(position));
         intent.putExtra("status", mStatuses.get(position));
+        intent.putExtra("user", mUser);
+        intent.putExtra("id", mIDs.get(position));
         startActivity(intent);
     }
 
@@ -133,13 +148,16 @@ public class ProgressMainActivity extends AppCompatActivity {
         String rGoals[];
         String rStatuses[];
         Integer rImages[];
+        String rUser;
 
-        ProgressListAdapter(Context c, String goals[], String statuses[], Integer images[]){
+
+        ProgressListAdapter(Context c, String goals[], String statuses[], Integer images[], String user){
             super(c, R.layout.progress_row, R.id.goal_descriptionTV, goals);
             this.context = c;
             this.rGoals = goals;
             this.rStatuses = statuses;
             this.rImages = images;
+            this.rUser = user;
 
         }
 

@@ -19,7 +19,7 @@ public class AddProgress extends AppCompatActivity {
     RadioButton todo_rb;
     RadioButton in_progress_rb;
     RadioButton completed_rb;
-
+    String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,9 @@ public class AddProgress extends AppCompatActivity {
         completed_rb = findViewById(R.id.completed);
 
         todo_rb.setChecked(true);
+
+        Intent intent = getIntent();
+        user = intent.getStringExtra("user");
 
         cancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +78,7 @@ public class AddProgress extends AppCompatActivity {
         ContentValues contentValues = new ContentValues();
         contentValues.put(UserGoalContract.Goal.GOAL, goal);
         contentValues.put(UserGoalContract.Goal.STATUS, status);
+        contentValues.put(UserGoalContract.Goal.USER, user);
 
         long recordId =
                 db.insert(UserGoalContract.Goal.TABLE_NAME,null,contentValues);
@@ -91,6 +95,7 @@ public class AddProgress extends AppCompatActivity {
 
     private void openProgressListActivity() {
         Intent intent = new Intent(this, ProgressMainActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 

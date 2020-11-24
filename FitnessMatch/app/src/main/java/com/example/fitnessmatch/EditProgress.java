@@ -25,6 +25,8 @@ public class EditProgress extends AppCompatActivity {
 
     String prev_goal;
     String status;
+    String user;
+    Integer goal_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class EditProgress extends AppCompatActivity {
 
         prev_goal = intent.getStringExtra("goal");
         status = intent.getStringExtra("status");
+        user = intent.getStringExtra("user");
+        goal_id = intent.getIntExtra("id", 0);
 
         current_goalET.setText(prev_goal);
         setRadioButton(status);
@@ -82,8 +86,11 @@ public class EditProgress extends AppCompatActivity {
         UserGoalDBHelper dbHelper = new UserGoalDBHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        String whereClause = UserGoalContract.Goal.GOAL+ "=?";
-        String[] whereArgs = {prev_goal};
+        String whereClause = UserGoalContract.Goal.GOAL+ "=?" + " AND " + UserGoalContract.Goal.USER + "=?"
+                + " AND " + UserGoalContract.Goal._ID + "=?";
+
+        String[] whereArgs = {prev_goal, user, goal_id.toString()};
+
         int count = db.delete(UserGoalContract.Goal.TABLE_NAME,whereClause,whereArgs);
         db.close();
 
@@ -120,8 +127,10 @@ public class EditProgress extends AppCompatActivity {
         contentValues.put(UserGoalContract.Goal.GOAL, goal);
         contentValues.put(UserGoalContract.Goal.STATUS, status);
 
-        String whereClause = UserGoalContract.Goal.GOAL+ "=?";
-        String[] whereArgs = {prev_goal};
+        String whereClause = UserGoalContract.Goal.GOAL+ "=?" + " AND " + UserGoalContract.Goal.USER + "=?"
+                + " AND " + UserGoalContract.Goal._ID + "=?";
+
+        String[] whereArgs = {prev_goal, user, goal_id.toString()};
 
         int count =
                 db.update(UserGoalContract.Goal.TABLE_NAME,contentValues,whereClause,whereArgs);
@@ -154,6 +163,8 @@ public class EditProgress extends AppCompatActivity {
 
     private void openProgressListActivity() {
         Intent intent = new Intent(this, ProgressMainActivity.class);
+        intent.putExtra("user", user);
+
         startActivity(intent);
     }
 }

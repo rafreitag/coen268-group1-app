@@ -92,6 +92,7 @@ public class HomeActivity extends AppCompatActivity {
     // Start find progress
     public void progress(View view){
         Intent intent = new Intent(this, ProgressMainActivity.class);
+        intent.putExtra("user", email);
         startActivity(intent);
     }
 
