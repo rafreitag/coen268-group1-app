@@ -93,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
                     usersRef.child("profile").setValue(profile);
 
                     // Create Preferences object to add to Firebase
-                    // This is just a default Prefernces object that will be overwritten when a user goes through and fills out all of their preferences
+                    // This is just a default Preferences object that will be overwritten when a user goes through and fills out all of their preferences
                     Preferences preferences = new Preferences();
                     // Add preferences to Firebase
                     usersRef.child("preferences").setValue(preferences);

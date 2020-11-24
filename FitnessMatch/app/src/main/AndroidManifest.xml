@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessMatch">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/maps_api_key" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +25,7 @@
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".LocationActivity"></activity>
         <activity android:name=".FindActivity"></activity>
         <activity android:name=".Find2Activity"></activity>
     </application>
