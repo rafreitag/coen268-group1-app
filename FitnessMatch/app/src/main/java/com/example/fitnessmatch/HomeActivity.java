@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity {
     private String name = "";
+    private String email = "";
     private TextView welcome;
     private FirebaseAuth mAuth;
 
@@ -40,7 +41,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Profile profile = snapshot.getValue(Profile.class);
-                welcome.setText("Welcome, " + profile.getName());
+                name = profile.getName();
+                email = profile.getEmail();
+                welcome.setText("Welcome, " + name);
             }
 
             @Override
@@ -85,4 +88,13 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LocationActivity.class);
         startActivity(intent);
     }
+
+    // Start find progress
+    public void progress(View view){
+        Intent intent = new Intent(this, ProgressMainActivity.class);
+        startActivity(intent);
+    }
+
+
+
 }

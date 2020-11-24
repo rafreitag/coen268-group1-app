@@ -25,9 +25,18 @@
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".LocationActivity"></activity>
+        <activity android:name=".LocationActivity"
+            android:parentActivityName=".HomeActivity">
+        </activity>
         <activity android:name=".FindActivity"></activity>
         <activity android:name=".Find2Activity"></activity>
+        <activity android:name=".EditProgress"></activity>
+        <activity android:name=".AddProgress" ></activity>
+        <activity android:name=".ProgressMainActivity"
+            android:parentActivityName=".HomeActivity">
+        </activity>
+
+
     </application>
 
 </manifest>

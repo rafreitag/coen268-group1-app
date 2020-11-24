@@ -50,6 +50,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_location);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         btn_find_location = findViewById(R.id.btn_find_location);
         btn_next = findViewById(R.id.btn_next);
