@@ -3,6 +3,7 @@ package com.example.fitnessmatch;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
     private String name = "";
@@ -64,6 +67,31 @@ public class HomeActivity extends AppCompatActivity {
                 Preferences preferences = snapshot.getValue(Preferences.class);
                 // Just a test to make sure that I am receiving the information correctly
                 Toast.makeText(HomeActivity.this, preferences.getOther_activity(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(HomeActivity.this, "Read failed. Please retry login", Toast.LENGTH_LONG).show();
+                // Logout User
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Should retrieve all users if it works correctly
+        DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users");
+        myDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                Map<String,Object> map = snapshot.getValue(Map.class);
+//                for (Object key : map.keySet()) {
+//                    System.out.println(key);
+                for (DataSnapshot iterateSnapshot : snapshot.getChildren()) {
+//                    Log.i("TEST", iterateSnapshot.child("preferences").getValue(Preferences.class).getOther_activity());
+                    Preferences preferences = iterateSnapshot.child("preferences").getValue(Preferences.class);
+                    Log.i("TEST", preferences.printData());
+                }
             }
 
             @Override

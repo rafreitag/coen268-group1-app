@@ -53,6 +53,14 @@ public class Preferences implements Serializable{
         this.other_activity = other_activity;
     }
 
+    public String printData(){
+        String s = "Hiking: " + Boolean.toString(this.isHiking()) +
+                "Walking: " + Boolean.toString(this.isBiking()) +
+                "Other: " + getOther_activity();
+
+        return s;
+    }
+
     public boolean isHiking() {
         return hiking;
     }
