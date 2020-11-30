@@ -69,7 +69,6 @@
                 android:minWidth="0dp"
                 style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
-                android:textBold="false"
                 android:textSize="16sp" />
 
         </LinearLayout>

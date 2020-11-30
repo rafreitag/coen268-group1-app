@@ -71,6 +71,9 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
 
     @Override
     public void onLocationChanged(final Location location) {
+        //remove location callback:
+        locationManager.removeUpdates(this);
+
         //your code here
         latitude = location.getLatitude();
         longitude = location.getLongitude();
@@ -91,11 +94,14 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
             return;
         }
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 0, (LocationListener) this);
-
         location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        latitude = location.getLatitude();
-        longitude = location.getLongitude();
+        if(location != null) {
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
+        } else {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, (LocationListener) this);
+        }
+
         String lat = String.valueOf(latitude);
         String lng = String.valueOf(longitude);
         Log.i("LocationFragment", "Latitude: " + lat + "Longitude: " + lng);
@@ -123,8 +129,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         et_address.setText(address);
     }
 
-    public void getLocationFromAddress(String strAddress){
-        getLocation();
+    public void getLocationFromAddress(String strAddress) {
         Geocoder coder = new Geocoder(this);
         List<Address> address;
 
@@ -133,9 +138,12 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
             if (address == null) {
                 return;
             }
-            Address location = address.get(0);
-            location.getLatitude();
-            location.getLongitude();
+            Address adr_location = address.get(0);
+            latitude = adr_location.getLatitude();
+            longitude = adr_location.getLongitude();
+            String lat = String.valueOf(latitude);
+            String lng = String.valueOf(longitude);
+            Log.i("LocationFragment", "Latitude: " + lat + "Longitude: " + lng);
         } catch (IOException e) {
             e.printStackTrace();
         }
