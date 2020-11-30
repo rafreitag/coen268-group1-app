@@ -181,7 +181,7 @@ public class Preferences implements Serializable{
         this.level = level;
     }
 
-    public double getUserLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
@@ -189,7 +189,7 @@ public class Preferences implements Serializable{
         this.latitude = latitude;
     }
 
-    public double getUserLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
@@ -211,5 +211,51 @@ public class Preferences implements Serializable{
 
     public void setRunning(boolean running) {
         this.running = running;
+    }
+
+    public int calculateMatchScore(Preferences p) {
+        int count = 0;
+
+        if (this.isHiking() == p.isHiking()) { count++; }
+        if (this.isYoga() == p.isYoga()) { count++; }
+        if (this.isPilates() == p.isPilates()) { count++; }
+        if (this.isWeight_lifting() == p.isWeight_lifting()) { count++; }
+        if (this.isBiking() == p.isBiking()) { count++; }
+        if (this.isCircuit_training() == p.isCircuit_training()) { count++; }
+        if (this.isBasketball() == p.isBasketball()) { count++; }
+        if (this.isVolleyball() == p.isVolleyball()) { count++; }
+        if (this.isSoccer() == p.isSoccer()) { count++; }
+        if (this.isUltimate_frisbee() == p.isUltimate_frisbee()) { count++; }
+        if (this.isRunning() == p.isRunning()) { count++; }
+        if (this.getFrequency() == p.getFrequency()) { count++; }
+        if (this.getPref_time() == p.getPref_time()) { count++; }
+        if (this.getLevel() == p.getLevel()) { count++; }
+
+        double score = (double) count / 14;
+
+        return (int) Math.floor(score * 100);
+
+    }
+
+    public double calculateDistanceFrom(Preferences p) {
+        double theta = this.getLongitude() - p.getLongitude();
+        double dist = Math.sin(deg2rad(this.getLatitude()))
+                * Math.sin(deg2rad(p.getLatitude()))
+                + Math.cos(deg2rad(this.getLatitude()))
+                * Math.cos(deg2rad(p.getLatitude()))
+                * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+
+        return (dist);
+    }
+
+    private double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    private double rad2deg(double rad) {
+        return (rad * 180.0 / Math.PI);
     }
 }

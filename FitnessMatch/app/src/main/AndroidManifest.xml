@@ -58,6 +58,9 @@
             android:parentActivityName=".HomeActivity"
             android:label="@string/progress_name">
         </activity>
+        <activity android:name=".NewFindActivity"
+            android:label="Matches">
+        </activity>
 
 
     </application>

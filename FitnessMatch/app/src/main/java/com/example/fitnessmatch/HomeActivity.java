@@ -113,7 +113,9 @@ public class HomeActivity extends AppCompatActivity {
 
     // Start find process
     public void find(View view){
-        Intent intent = new Intent(this, LocationActivity.class);
+//        Intent intent = new Intent(this, LocationActivity.class);
+//        startActivity(intent);
+        Intent intent = new Intent(this, NewFindActivity.class);
         startActivity(intent);
     }
 
