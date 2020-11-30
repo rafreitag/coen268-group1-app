@@ -11,75 +11,68 @@
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progress="20"
+        android:progress="100"
         android:progressTint="@color/darkBlue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
-        android:text="Enter your current address"
+        android:text="What is your fitness level?"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/determinateBar" />
 
-    <ImageView
-        android:id="@+id/location_icon"
-        android:src="@drawable/location_icon"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/btn_find_location"
+    <RadioGroup
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:onClick="findAddressFromLocation"
-        android:text="Use current location"
-        android:textColor="@color/black"
-        style="?android:attr/borderlessButtonStyle"
-        android:textAllCaps="false"
-        android:textStyle="italic"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/location_icon"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <EditText
-        android:id="@+id/et_address"
-        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="25dp"
-        android:textSize="16sp"
-        android:hint="Address"
-        android:inputType="textPostalAddress"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/rb_level_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="beginner"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/rb_level_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="intermediate"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/rb_level_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="advanced"
+            android:textSize="12sp" />
+
+    </RadioGroup>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
-        android:onClick="nextPage"
-        android:text="Next >"
+        android:onClick="find_matches"
+        android:text="Find me a partner!"
         android:backgroundTint="@color/darkBlue"
         android:textSize="18sp"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

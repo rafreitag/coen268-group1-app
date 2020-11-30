@@ -11,60 +11,63 @@
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progress="20"
+        android:progress="60"
         android:progressTint="@color/darkBlue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
-        android:text="Enter your current address"
+        android:text="How often do you like to work out per week?"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/determinateBar" />
 
-    <ImageView
-        android:id="@+id/location_icon"
-        android:src="@drawable/location_icon"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/btn_find_location"
+    <RadioGroup
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:onClick="findAddressFromLocation"
-        android:text="Use current location"
-        android:textColor="@color/black"
-        style="?android:attr/borderlessButtonStyle"
-        android:textAllCaps="false"
-        android:textStyle="italic"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/location_icon"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <EditText
-        android:id="@+id/et_address"
-        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="25dp"
-        android:textSize="16sp"
-        android:hint="Address"
-        android:inputType="textPostalAddress"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/rb_frequency_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 time"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <RadioButton
+            android:id="@+id/rb_frequency_2"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:text="2-3 times"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/rb_frequency_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4-5 times"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/rb_frequency_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="6-7 times"
+            android:textSize="12sp" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/button"
@@ -79,7 +82,6 @@
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

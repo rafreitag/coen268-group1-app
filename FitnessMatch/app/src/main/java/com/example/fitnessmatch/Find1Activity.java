@@ -3,30 +3,22 @@ package com.example.fitnessmatch;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.Serializable;
 
-public class FindActivity extends AppCompatActivity {
+public class Find1Activity extends AppCompatActivity {
 
     private CheckBox running, walking, yoga, biking, weight_lifting, swimming, other, hiking, pilates, circuit_training, basketball, volleyball, ultimate_frisbee, soccer;
     private EditText other_activity;
-    private RadioButton frequency1, frequency2, frequency3, frequency4;
 
     private Preferences preferences;
 
@@ -36,7 +28,7 @@ public class FindActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.find);
+        setContentView(R.layout.activity_find1);
         mAuth = FirebaseAuth.getInstance();
 
         // Receive intent passed in from FindActivity
@@ -60,12 +52,6 @@ public class FindActivity extends AppCompatActivity {
         volleyball = findViewById(R.id.cb_volleyball);
         ultimate_frisbee = findViewById(R.id.cb_ultimate_frisbee);
         soccer = findViewById(R.id.cb_soccer);
-
-        // How often do you want to work out per week?
-        frequency1 = findViewById(R.id.rb_frequency_1);
-        frequency2 = findViewById(R.id.rb_frequency_2);
-        frequency3 = findViewById(R.id.rb_frequency_3);
-        frequency4 = findViewById(R.id.rb_frequency_4);
     }
 
     // More of a test than anything else to confirm that I know a user is actually logged in
@@ -74,15 +60,15 @@ public class FindActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser == null){
-            Toast.makeText(this, "Not logged in", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show();
-        }
+//        if(currentUser == null){
+//            Toast.makeText(this, "Not logged in", Toast.LENGTH_SHORT).show();
+//        }
+//        else{
+//            Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show();
+//        }
     }
 
-    public void page2(View view){
+    public void nextPage(View view) {
         // Create intent to go to second page of find
         Intent a = new Intent(this, Find2Activity.class);
         // Update preferences object with all of the current preferences filled out during page 1
@@ -111,15 +97,5 @@ public class FindActivity extends AppCompatActivity {
         preferences.setSoccer(soccer.isChecked());
         if(other.isChecked())
             preferences.setOther_activity(other_activity.getText().toString());
-
-        // Set frequency
-        if(frequency1.isChecked())
-            preferences.setFrequency(1);
-        else if(frequency2.isChecked())
-            preferences.setFrequency(2);
-        else if(frequency3.isChecked())
-            preferences.setFrequency(3);
-        else if(frequency4.isChecked())
-            preferences.setFrequency(4);
     }
 }

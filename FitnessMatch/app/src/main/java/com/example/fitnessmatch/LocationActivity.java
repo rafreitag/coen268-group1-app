@@ -61,12 +61,12 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser == null){
-            Toast.makeText(this, "Not logged in", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show();
-        }
+//        if(currentUser == null){
+//            Toast.makeText(this, "Not logged in", Toast.LENGTH_SHORT).show();
+//        }
+//        else{
+//            Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show();
+//        }
     }
 
     @Override
@@ -164,7 +164,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         }
 
         Log.i("LocationFragment", "Next fragment");
-        Intent a = new Intent(this, FindActivity.class);
+        Intent a = new Intent(this, Find1Activity.class);
         // Update preferences object with location
         updateLocation();
         // Sending this preferences object to the find page so that none of the choices are lost
