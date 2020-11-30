@@ -6,20 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ProgressBar
+        android:id="@+id/determinateBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="40"
+        android:progressTint="@color/darkBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
         android:text="How do you like working out?"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/determinateBar" />
 
     <CheckBox
         android:id="@+id/cb_running"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
         android:text="running"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +43,7 @@
         android:id="@+id/cb_walking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:text="walking"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +53,7 @@
         android:id="@+id/cb_yoga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:text="yoga"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +63,7 @@
         android:id="@+id/cb_biking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:text="biking"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +73,7 @@
         android:id="@+id/cb_other"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:text="other:"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +81,7 @@
 
     <EditText
         android:id="@+id/other_activity"
-        android:layout_width="119dp"
+        android:layout_width="110dp"
         android:layout_height="40dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -71,73 +89,17 @@
         app:layout_constraintStart_toEndOf="@+id/cb_other"
         app:layout_constraintTop_toTopOf="@+id/cb_other" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_other" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="How often do you want to work out per week?"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:ignore="MissingConstraints">
-
-        <RadioButton
-            android:id="@+id/rb_frequency_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1 time"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <RadioButton
-            android:id="@+id/rb_frequency_2"
-            android:layout_width="129dp"
-            android:layout_height="wrap_content"
-            android:text="2-3 times"
-            android:textSize="12sp" />
-
-        <RadioButton
-            android:id="@+id/rb_frequency_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="4-5 times"
-            android:textSize="12sp" />
-
-        <RadioButton
-            android:id="@+id/rb_frequency_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="6-7 times"
-            android:textSize="12sp" />
-    </RadioGroup>
-
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:onClick="page2"
-        android:text="Next Page"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:onClick="nextPage"
+        android:text="Next >"
+        android:backgroundTint="@color/darkBlue"
+        android:textSize="18sp"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -145,6 +107,7 @@
         android:id="@+id/cb_weight_lifting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:text="weight lifting"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,6 +117,7 @@
         android:id="@+id/cb_swimming"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:text="swimming"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +127,7 @@
         android:id="@+id/cb_hiking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
+        android:layout_marginStart="100dp"
         android:text="hiking"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/cb_running"
@@ -222,6 +186,5 @@
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/cb_volleyball"
         app:layout_constraintTop_toBottomOf="@+id/cb_volleyball" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
