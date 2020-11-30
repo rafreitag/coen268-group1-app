@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
                 Profile profile = snapshot.getValue(Profile.class);
                 name = profile.getName();
                 email = profile.getEmail();
-                welcome.setText("Welcome, " + name);
+                welcome.setText(name);
             }
 
             @Override
@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Preferences preferences = snapshot.getValue(Preferences.class);
                 // Just a test to make sure that I am receiving the information correctly
-                Toast.makeText(HomeActivity.this, preferences.getOther_activity(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(HomeActivity.this, preferences.getOther_activity(), Toast.LENGTH_SHORT).show();
             }
 
             @Override

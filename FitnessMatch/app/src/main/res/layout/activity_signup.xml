@@ -126,7 +126,6 @@
                 android:layout_weight="1"
                 android:onClick="back_to_login"
                 android:text="here"
-                android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:visibility="visible"
                 app:iconTint="#FFFFFF" />
