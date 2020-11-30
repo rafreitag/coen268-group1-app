@@ -6,29 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".AddProgress">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.8"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/progress_backdrop" />
+
     <EditText
         android:id="@+id/current_goalET"
-        android:layout_width="259dp"
-        android:layout_height="73dp"
+        android:layout_width="300dp"
+        android:layout_height="77dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="76dp"
+        android:backgroundTint="@color/white"
         android:ems="10"
+        android:fontFamily="sans-serif"
         android:hint="Insert Current Goal Here"
         android:inputType="textPersonName"
+        android:singleLine="true"
         android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/radio_button_group"
-        android:layout_width="261dp"
-        android:layout_height="190dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="74dp"
+        android:layout_width="239dp"
+        android:layout_height="211dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="75dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/current_goalET">
 
@@ -36,48 +57,73 @@
             android:id="@+id/todo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:buttonTint="?attr/colorOnPrimary"
+            android:fontFamily="sans-serif-light"
             android:text="Todo"
             android:textAlignment="textStart"
-            android:textColorLink="#03A9F4"
-            android:textSize="24sp" />
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/lightBlue"
+            android:textColorLink="@color/darkBlue"
+            android:textCursorDrawable="@color/lightBlue"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/in_progress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:buttonTint="?attr/colorOnPrimary"
+            android:fontFamily="sans-serif-light"
             android:text="In Progress"
             android:textAlignment="textStart"
-            android:textColorLink="#03A9F4"
-            android:textSize="24sp" />
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/lightBlue"
+            android:textColorLink="@color/darkBlue"
+            android:textCursorDrawable="@color/lightBlue"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/completed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:buttonTint="?attr/colorOnPrimary"
+            android:fontFamily="sans-serif-light"
             android:text="Completed"
             android:textAlignment="textStart"
-            android:textColorLink="#03A9F4"
-            android:textSize="24sp" />
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/lightBlue"
+            android:textColorLink="@color/darkBlue"
+            android:textCursorDrawable="@color/lightBlue"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
     </RadioGroup>
 
     <Button
         android:id="@+id/progress_update_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/darkBlue"
         android:text="ADD"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/progress_cancel_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/darkBlue"
         android:text="CANCEL"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
