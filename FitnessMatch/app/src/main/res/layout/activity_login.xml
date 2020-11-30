@@ -60,12 +60,16 @@
 
             <Button
                 android:id="@+id/here"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:onClick="back_to_sign_up"
                 android:text="here"
                 android:textColor="@color/black"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                android:textBold="false"
                 android:textSize="16sp" />
 
         </LinearLayout>
