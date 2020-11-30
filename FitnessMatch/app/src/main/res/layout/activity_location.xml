@@ -10,13 +10,13 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/find"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
-            android:text="Find a Fitness Partner"
-            android:textSize="26sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/find"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="26dp"-->
+<!--            android:text="Find a Fitness Partner"-->
+<!--            android:textSize="26sp" />-->
 
         <TextView
             android:id="@+id/address"
@@ -28,16 +28,33 @@
             android:textSize="20sp"
             android:text="Enter your address" />
 
-        <Button
-            android:id="@+id/btn_find_location"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="50dp"
-            android:onClick="findAddressFromLocation"
-            android:text="Use current location"
-            android:textSize="10sp" />
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:src="@drawable/location_icon"
+                android:layout_marginTop="8dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <Button
+                android:id="@+id/btn_find_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="findAddressFromLocation"
+                android:text="Use current location"
+                android:textColor="@color/black"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                android:textStyle="italic"
+                android:textSize="14sp" />
+        </LinearLayout>
+
 
 
         <EditText
@@ -45,7 +62,8 @@
             android:layout_width="325dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:hint="Address" />
+            android:hint="Address"
+            android:inputType="textPostalAddress" />
 
         <Button
             android:id="@+id/btn_next"

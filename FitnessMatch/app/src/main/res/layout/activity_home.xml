@@ -9,40 +9,43 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:onClick="logout"
-            android:text="LOGOUT"
-            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="50dp"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:onClick="find"
-            android:text="Find" />
+            android:text="Find a fitness partner" />
 
         <Button
             android:id="@+id/btn_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="60dp"
+            android:layout_marginTop="25dp"
             android:onClick="progress"
-            android:text="Progress" />
+            android:text="Track your progress" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="50dp"
+            android:onClick="logout"
+            android:text="LOGOUT"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
