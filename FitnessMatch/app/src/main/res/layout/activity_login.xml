@@ -90,11 +90,10 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
                 android:onClick="back_to_sign_up"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="4dp"
                 android:text="here"
-                android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 

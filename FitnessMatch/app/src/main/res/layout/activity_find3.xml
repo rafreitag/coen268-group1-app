@@ -43,35 +43,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="morning (before 11 am)"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/rb_pref_time_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="midday (11 am - 2 pm)"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/rb_pref_time_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="afternoon (2 - 5 pm)"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/rb_pref_time_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="evening (5 - 8 pm)"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/rb_pref_time_5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="late (8 - 12 pm)"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
     </RadioGroup>
 
     <Button
