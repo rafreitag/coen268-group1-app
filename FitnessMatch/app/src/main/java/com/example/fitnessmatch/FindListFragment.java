@@ -33,13 +33,8 @@ public class FindListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_find_list, container, false);
         Log.i("LIST_FRAG", "fragment created");
-        //setContentView(R.layout.activity_main);
-
-
-
 
         listView = view.findViewById(R.id.listViewUser);
-
 
         ArrayList<MatchedUserItem> matchedUserList = new ArrayList<>();
 
@@ -47,7 +42,10 @@ public class FindListFragment extends Fragment {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         //CAN DO FILTERING HERE EVENTUALLY INSTEAD OF QUERYING ALL
-        Cursor cursor = db.rawQuery("SELECT * FROM " + UserMatchDataContract.MatchData.TABLE_NAME, null);
+        String order = "match_score";
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + UserMatchDataContract.MatchData.TABLE_NAME +
+                                        " ORDER BY CAST(" + order + " AS INTEGER) DESC", null);
 
         cursor.moveToFirst();
 
@@ -68,27 +66,10 @@ public class FindListFragment extends Fragment {
             matchedUserList.add(item);
 
             cursor.moveToNext();
-
         }
 
         MatchedUserItemAdapter matchedUserItemAdapter = new MatchedUserItemAdapter(getActivity(), R.layout.matched_user_item, matchedUserList);
         listView.setAdapter(matchedUserItemAdapter);
-
-
-        //test listview stuff
-//        String[] fruits = new String[] {
-//                "Cape Gooseberry",
-//                "Capuli cherry"
-//        };
-//
-//        // Create a List from String Array elements
-//        final List<String> fruits_list = new ArrayList<String>(Arrays.asList(fruits));
-//
-//        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-//                (getActivity(), android.R.layout.simple_list_item_1, fruits_list);
-//
-//        listView.setAdapter(arrayAdapter);
-
 
         return view;
     }

@@ -48,7 +48,7 @@ public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
 
         int int_match_score = Integer.parseInt(match_score);
 
-        if (int_match_score <  100 && int_match_score >=  80){
+        if (int_match_score >=  80){
             tv_match_score.setTextColor(mContext.getColor(R.color.green));
         }
         else if (int_match_score <  80 && int_match_score >=  40){
