@@ -45,6 +45,8 @@ public class FindListFragment extends Fragment {
         listView = view.findViewById(R.id.listViewUser);
         createMatchDatabase();
 
+        sendRequestTo("0Gi8Xeb4nhPYg28JkKg22fRZbQJ2");
+
         return view;
     }
 
@@ -146,6 +148,36 @@ public class FindListFragment extends Fragment {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
+            }
+        });
+    }
+
+
+    public void sendRequestTo(String receiver){
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        DatabaseReference senderReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("requests");
+        senderReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                senderReference.child(receiver).setValue("SENT");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        DatabaseReference receiverReference = FirebaseDatabase.getInstance().getReference("users").child(receiver).child("requests");
+        receiverReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                receiverReference.child(mAuth.getCurrentUser().getUid()).setValue("RECV");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
