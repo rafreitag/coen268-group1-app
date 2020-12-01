@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,23 +51,25 @@ public class Find4Activity extends AppCompatActivity {
         else if(level3.isChecked())
             preferences.setLevel(3);
     }
-
-    // NEED TO RETRIEVE ALL USER DATA AT THIS POINT SO WE CAN DO THE MATCH STUFF BUT I HAVE NOT QUITE FIGURED OUT HOW TO DO THAT
-    // THE CODE TO RETRIEVE ONE SPECIFIC USER PROFILE IS IN HOMEACTIVITY.JAVA
+    
     // Adds all preferences (from page 1 and page 2 of find) to Firebase and then redirects to home page
-    public void find_matches(View view){
-//        progressBar.setVisibility(View.VISIBLE);
+    public void updatePreferences(View view){
+
         // Update preferences object with all of the current preferences filled out during page 1 and page 2
         update_preferences2();
         // Get correct DB reference
+
         FirebaseUser user = mAuth.getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
         DatabaseReference usersRef = myRef.child("users").child(user.getUid());
         // Add preferences to Firebase
         usersRef.child("preferences").setValue(preferences);
-//        progressBar.setVisibility(View.INVISIBLE);
+
         // Go to home page
+
+        Toast.makeText(this, "Preferences Successfully Updated", Toast.LENGTH_SHORT).show();
+
         Intent a = new Intent(this, HomeActivity.class);
         startActivity(a);
     }

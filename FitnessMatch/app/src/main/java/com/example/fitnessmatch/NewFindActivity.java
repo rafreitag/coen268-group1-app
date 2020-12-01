@@ -19,9 +19,6 @@ import com.google.firebase.firestore.auth.User;
 
 public class NewFindActivity extends AppCompatActivity {
 
-    //Preferences currentUserPreferences; // = new Preferences(true, false, true, false, true, false, true, false, true, false, true, false, true, 1, 2, 3, 96.212, -121.323, "other");
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +31,4 @@ public class NewFindActivity extends AppCompatActivity {
                     .commit();
         }
     }
-
-
-
-
-
-
 }
