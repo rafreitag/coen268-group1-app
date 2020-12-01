@@ -66,9 +66,9 @@
             android:parentActivityName=".HomeActivity"></activity>
         <activity
             android:name=".NewFindActivity"
-            android:label="Matches"></activity>
-        <activity android:name=".RequestsActivity"
-            android:label="Requests"></activity>
+            android:label="Matches"
+            android:parentActivityName=".HomeActivity"
+            ></activity>
 
     </application>
 
