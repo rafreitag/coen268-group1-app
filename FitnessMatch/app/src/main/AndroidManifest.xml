@@ -69,6 +69,9 @@
             android:label="Matches"
             android:parentActivityName=".HomeActivity"
             ></activity>
+        <activity android:name=".RequestsActivity"
+            android:label="Requests"
+            ></activity>
 
     </application>
 
