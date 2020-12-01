@@ -81,6 +81,7 @@ public class WorkoutHistoryActivity extends AppCompatActivity {
 
         Date current_date = new Date();
         month_tv.setText(dataFormatMonthYear.format(current_date));
+        compactCalendar.displayOtherMonthDays(true);
 
         getAllStudentInfo();
 
@@ -159,6 +160,10 @@ public class WorkoutHistoryActivity extends AppCompatActivity {
     public void rightMap(View view){
         compactCalendar.scrollRight();
     }
+
+
+
+
     private void getGoalInfoWithDate(Long milli) {
         mIDs.clear();
         mGoals.clear();
