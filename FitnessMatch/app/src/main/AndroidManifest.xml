@@ -67,6 +67,8 @@
         <activity
             android:name=".NewFindActivity"
             android:label="Matches"></activity>
+        <activity android:name=".RequestsActivity"
+            android:label="Requests"></activity>
 
     </application>
 

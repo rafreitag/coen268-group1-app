@@ -108,6 +108,21 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_preferences" />
 
     <Button
+        android:id="@+id/btn_requests"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/darkBlue"
+        android:onClick="viewRequests"
+        android:text="Partner Requests"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_history" />
+
+    <Button
         android:id="@+id/btn_logout"
         android:layout_width="70dp"
         android:layout_height="35dp"

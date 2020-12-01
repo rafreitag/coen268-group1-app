@@ -114,6 +114,12 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // requests activity
+    public void viewRequests(View view){
+        Intent intent = new Intent(this, RequestsActivity.class);
+        startActivity(intent);
+    }
+
 
 
 }
