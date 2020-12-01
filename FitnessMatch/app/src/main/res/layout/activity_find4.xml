@@ -64,15 +64,15 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
-        android:onClick="find_matches"
-        android:text="Find me a partner!"
         android:backgroundTint="@color/darkBlue"
+        android:onClick="find_matches"
+        android:text="Save Preferences"
         android:textSize="18sp"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
