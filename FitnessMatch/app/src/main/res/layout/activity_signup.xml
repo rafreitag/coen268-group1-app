@@ -125,6 +125,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="back_to_login"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="4dp"
                 android:text="here"
                 android:textColor="@color/black"
                 android:visibility="visible"
