@@ -54,50 +54,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        // Retrieve current 'preferences' of user
-        DatabaseReference myPreferences = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("preferences");
-        myPreferences.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Preferences preferences = snapshot.getValue(Preferences.class);
-                // Just a test to make sure that I am receiving the information correctly
-//                Toast.makeText(HomeActivity.this, preferences.getOther_activity(), Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(HomeActivity.this, "Read failed. Please retry login", Toast.LENGTH_LONG).show();
-                // Logout User
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        // Should retrieve all users if it works correctly
-        DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users");
-        myDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                Map<String,Object> map = snapshot.getValue(Map.class);
-//                for (Object key : map.keySet()) {
-//                    System.out.println(key);
-                for (DataSnapshot iterateSnapshot : snapshot.getChildren()) {
-//                    Log.i("TEST", iterateSnapshot.child("preferences").getValue(Preferences.class).getOther_activity());
-                    Preferences preferences = iterateSnapshot.child("preferences").getValue(Preferences.class);
-                    Log.i("TEST", preferences.printData());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(HomeActivity.this, "Read failed. Please retry login", Toast.LENGTH_LONG).show();
-                // Logout User
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void logout(View view) {
@@ -106,17 +64,24 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Start find process
-    public void find(View view){
+    // view match list
+    public void matchList(View view){
 //        Intent intent = new Intent(this, LocationActivity.class);
 //        startActivity(intent);
         Intent intent = new Intent(this, NewFindActivity.class);
         startActivity(intent);
     }
 
-    // Start find progress
+    // progress activity
     public void progress(View view){
         Intent intent = new Intent(this, ProgressMainActivity.class);
+        intent.putExtra("user", email);
+        startActivity(intent);
+    }
+
+    // progress activity
+    public void updatePreferences(View view){
+        Intent intent = new Intent(this, LocationActivity.class);
         intent.putExtra("user", email);
         startActivity(intent);
     }
