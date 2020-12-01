@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WorkoutHistoryActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/progress_backdrop" />
+
+    <ImageButton
+        android:id="@+id/backdrop"
+        android:layout_width="414dp"
+        android:layout_height="341dp"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/custom_edit_text" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <!--        <com.github.sundeepk.compactcalendarview.CompactCalendarView-->
+<!--            android:id="@+id/compactcalendar_view"-->
+<!--            android:layout_width="357dp"-->
+<!--            android:layout_height="252dp"-->
+<!--            android:layout_marginTop="60dp"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingRight="10dp"-->
+<!--            app:compactCalendarBackgroundColor="@android:color/transparent"-->
+<!--            app:compactCalendarCurrentDayBackgroundColor="#54154F74"-->
+<!--            app:compactCalendarCurrentSelectedDayBackgroundColor="#5203A9F4"-->
+<!--            app:compactCalendarMultiEventIndicatorColor="@color/orange"-->
+<!--            app:compactCalendarTargetHeight="250dp"-->
+<!--            app:compactCalendarTextColor="@color/material_on_background_emphasis_high_type"-->
+<!--            app:compactCalendarTextSize="12sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <TextView
+            android:id="@+id/monthTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Month"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+            android:id="@+id/compactcalendar_view"
+            android:layout_width="377dp"
+            android:layout_height="257dp"
+            android:layout_marginStart="37dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="33dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:compactCalendarBackgroundColor="@android:color/transparent"
+            app:compactCalendarCurrentDayBackgroundColor="#80154F74"
+            app:compactCalendarCurrentDayIndicatorStyle="no_fill_large_indicator"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="#5203A9F4"
+            app:compactCalendarCurrentSelectedDayIndicatorStyle="fill_large_indicator"
+            app:compactCalendarEventIndicatorStyle="small_indicator"
+            app:compactCalendarMultiEventIndicatorColor="#fff"
+            app:compactCalendarTargetHeight="250dp"
+            app:compactCalendarTextColor="@color/material_on_background_disabled"
+            app:compactCalendarTextSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.583"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/monthTV" />
+
+        <TextView
+            android:id="@+id/none_completedTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="145dp"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view">
+
+            <ListView
+                android:id="@+id/completedList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="5.0sp"
+                android:scrollbarAlwaysDrawVerticalTrack="true">
+
+            </ListView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <ImageButton
+            android:id="@+id/leftCalenderButton"
+            android:layout_width="46dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:onClick="leftMap"
+            android:scaleType="fitXY"
+            android:tint="#27000000"
+            android:tintMode="src_in"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/left" />
+
+        <ImageButton
+            android:id="@+id/rightCalenderButton"
+            android:layout_width="46dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:onClick="rightMap"
+            android:scaleType="fitXY"
+            android:tint="#27000000"
+            android:tintMode="src_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/right" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

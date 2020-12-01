@@ -100,6 +100,13 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // Start workout history
+    public void history(View view){
+        Intent intent = new Intent(this, WorkoutHistoryActivity.class);
+        intent.putExtra("user", email);
+        startActivity(intent);
+    }
+
     // progress activity
     public void updatePreferences(View view){
         Intent intent = new Intent(this, LocationActivity.class);

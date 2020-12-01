@@ -7,12 +7,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class UserGoalDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "progress.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 8;
     private static final String CREATE_TABLE = "CREATE TABLE " +
             UserGoalContract.Goal.TABLE_NAME + "(" +
             UserGoalContract.Goal._ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             UserGoalContract.Goal.GOAL + " TEXT NOT NULL, " +
             UserGoalContract.Goal.STATUS + " TEXT NOT NULL, " +
+            UserGoalContract.Goal.DATE + " LONG, " +
             UserGoalContract.Goal.USER + " TEXT NOT NULL" +
             ")";
 

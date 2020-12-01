@@ -6,11 +6,16 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class EditProgress extends AppCompatActivity {
     Button cancel_btn;
@@ -27,6 +32,7 @@ public class EditProgress extends AppCompatActivity {
     String status;
     String user;
     Integer goal_id;
+    String parent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,7 @@ public class EditProgress extends AppCompatActivity {
         status = intent.getStringExtra("status");
         user = intent.getStringExtra("user");
         goal_id = intent.getIntExtra("id", 0);
+        parent = intent.getStringExtra("parent");
 
         current_goalET.setText(prev_goal);
         setRadioButton(status);
@@ -57,7 +64,11 @@ public class EditProgress extends AppCompatActivity {
         cancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openProgressListActivity();
+                if(parent.equals("progress")){
+                    openProgressListActivity();
+                }else{
+                    openWorkoutHistoryActivity();
+                }
 
             }
         });
@@ -100,12 +111,17 @@ public class EditProgress extends AppCompatActivity {
             Toast.makeText(this, "Deleted goal",Toast.LENGTH_SHORT).show();
         }
 
-        openProgressListActivity();
+        if(parent.equals("progress")){
+            openProgressListActivity();
+        }else{
+            openWorkoutHistoryActivity();
+        }
     }
 
     private void updateGoalInDatabase() {
         String goal = current_goalET.getText().toString();
         String status = "";
+        Long milli = -1L;
 
         if(goal.isEmpty()) {
             Toast.makeText(this, "Goal cannot be empty", Toast.LENGTH_SHORT).show();
@@ -114,6 +130,20 @@ public class EditProgress extends AppCompatActivity {
 
         if(completed_rb.isChecked()){
             status = "completed";
+            Date current = new Date();
+            current.setSeconds(0);
+            current.setMinutes(0);
+            current.setHours(0);
+
+
+            milli = current.getTime();
+            String largeNumberInString = String.valueOf(milli);
+            Long resultingNumber = Long.parseLong(largeNumberInString.substring(0, largeNumberInString.length()-3));
+            milli = resultingNumber * 1000;
+            Log.d("WUT", "date" + current);
+
+            Log.d("WUT", "added" + milli);
+
         }else if(in_progress_rb.isChecked()){
             status = "in progress";
         }else if(todo_rb.isChecked()){
@@ -126,6 +156,7 @@ public class EditProgress extends AppCompatActivity {
         ContentValues contentValues = new ContentValues();
         contentValues.put(UserGoalContract.Goal.GOAL, goal);
         contentValues.put(UserGoalContract.Goal.STATUS, status);
+        contentValues.put(UserGoalContract.Goal.DATE, milli);
 
         String whereClause = UserGoalContract.Goal.GOAL+ "=?" + " AND " + UserGoalContract.Goal.USER + "=?"
                 + " AND " + UserGoalContract.Goal._ID + "=?";
@@ -142,9 +173,19 @@ public class EditProgress extends AppCompatActivity {
             Toast.makeText(this,"Updated "+count+" goals",Toast.LENGTH_SHORT).show();
         }
 
+        if(parent.equals("progress")){
+            openProgressListActivity();
+        }else{
+            openWorkoutHistoryActivity();
+        }
 
-        openProgressListActivity();
+    }
 
+    private void openWorkoutHistoryActivity() {
+        Intent intent = new Intent(this, WorkoutHistoryActivity.class);
+        intent.putExtra("user", user);
+
+        startActivity(intent);
     }
 
     private void setRadioButton(String status) {

@@ -45,7 +45,7 @@
 
                 <TextView
                     android:id="@+id/statusTV"
-                    android:layout_width="253dp"
+                    android:layout_width="151dp"
                     android:layout_height="wrap_content"
 
                     android:layout_gravity="left|center_vertical"
@@ -54,6 +54,7 @@
                     android:textColor="#a9a9a9"
                     android:textSize="18sp"
                     android:textStyle="italic" />
+
             </LinearLayout>
 
             <ImageView
@@ -62,6 +63,7 @@
                 android:layout_height="47dp"
                 android:layout_gravity="center_vertical"
                 tools:srcCompat="@drawable/todo" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

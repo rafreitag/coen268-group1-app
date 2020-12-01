@@ -12,6 +12,7 @@ public final class UserGoalContract {
         public static final String GOAL = "goal";
         public static final String STATUS = "status";
         public static final String USER = "user";
+        public static final String DATE = "date";
 
     }
 

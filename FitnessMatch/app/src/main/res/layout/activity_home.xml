@@ -52,7 +52,7 @@
         android:layout_width="230dp"
         android:layout_height="70dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="25dp"
         android:backgroundTint="#154F74"
         android:onClick="matchList"
         android:text="Find a fitness partner"
@@ -61,16 +61,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_welcome_name" />
 
+
     <Button
         android:id="@+id/btn_progress"
         android:layout_width="230dp"
         android:layout_height="70dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
         android:backgroundTint="@color/darkBlue"
         android:onClick="progress"
         android:text="Track your progress"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_matchList" />
 
@@ -79,14 +82,30 @@
         android:layout_width="230dp"
         android:layout_height="70dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
         android:backgroundTint="@color/darkBlue"
         android:onClick="updatePreferences"
         android:text="Update Preferences"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_progress" />
 
+    <Button
+        android:id="@+id/btn_history"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/darkBlue"
+        android:onClick="history"
+        android:text="Workout History"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_preferences" />
 
     <Button
         android:id="@+id/btn_logout"
@@ -103,4 +122,3 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
