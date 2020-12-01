@@ -51,7 +51,7 @@ public class Find4Activity extends AppCompatActivity {
         else if(level3.isChecked())
             preferences.setLevel(3);
     }
-    
+
     // Adds all preferences (from page 1 and page 2 of find) to Firebase and then redirects to home page
     public void updatePreferences(View view){
 
