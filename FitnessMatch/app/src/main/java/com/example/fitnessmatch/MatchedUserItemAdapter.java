@@ -78,7 +78,7 @@ public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
                 sendRequestTo(user_id);
                 //verification button
                 //change color and stuff
-                //btn_send_request.setBa;
+                btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.lightGray));
                 //toast?
             }
         });
