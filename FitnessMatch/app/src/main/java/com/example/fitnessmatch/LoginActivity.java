@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, go to home page
                             Log.d(TAG, "signInWithEmail:success");
+                            
                             Intent a = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(a);
                         } else {

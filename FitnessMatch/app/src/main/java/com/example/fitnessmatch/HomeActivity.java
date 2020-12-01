@@ -18,6 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class HomeActivity extends AppCompatActivity {
     private String name = "";
     private String email = "";
@@ -53,6 +56,24 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        DatabaseReference myRequests = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("requests");
+//        myRequests.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//
+//
+//                myRequests.child("32fWef94f3s").setValue("sent");
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+
 
 
 

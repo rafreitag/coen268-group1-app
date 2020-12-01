@@ -98,6 +98,9 @@ public class SignUpActivity extends AppCompatActivity {
                     // Add preferences to Firebase
                     usersRef.child("preferences").setValue(preferences);
 
+                    // create requests child to hold all requests
+                    usersRef.child("requests").setValue(null);
+
                     // Go to home page
                     Intent a = new Intent(SignUpActivity.this, HomeActivity.class);
                     startActivity(a);
