@@ -28,13 +28,20 @@ public class NewFindActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_find);
         mAuth = FirebaseAuth.getInstance();
 
-        if (true) {
-            createMatchDatabase();
-        }
-        else{
-            //popup saying that you need to fill out your preferences first
-            //takes you to filling out preferences page
-        }
+        //move to home activity
+        createMatchDatabase();
+
+        //check if local database has anything
+        //if it does, populate list
+        //if none, make popup, go to preferences activity
+
+//        if (true) {
+//            createMatchDatabase();
+//        }
+//        else{
+//            //popup saying that you need to fill out your preferences first
+//            //takes you to filling out preferences page
+//        }
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -67,7 +74,7 @@ public class NewFindActivity extends AppCompatActivity {
 
                     String user_id = iterateSnapshot.getKey();
 
-                    Log.i(TAG, user_id +  " compared with " + mAuth.getCurrentUser().getUid());
+                    //Log.i(TAG, user_id +  " compared with " + mAuth.getCurrentUser().getUid());
 
                     if(!user_id.equals(mAuth.getCurrentUser().getUid())) {
 
@@ -81,9 +88,9 @@ public class NewFindActivity extends AppCompatActivity {
                         int match_score = currentUserPreferences.calculateMatchScore(preference);
                         double distance = currentUserPreferences.calculateDistanceFrom(preference);
 
-                        Log.i(TAG, "COMPARED WITH USER: " + iterateSnapshot.child("profile").getValue(Profile.class).getName() +
-                                "\nMatch Score = " + match_score +
-                                "\nDistance = " + String.format("%.2f", distance));
+//                        Log.i(TAG, "COMPARED WITH USER: " + iterateSnapshot.child("profile").getValue(Profile.class).getName() +
+//                                "\nMatch Score = " + match_score +
+//                                "\nDistance = " + String.format("%.2f", distance));
 
                         userMatchDataDBHelper.addData(user_id, user_name, String.format("%.2f", distance), String.valueOf(match_score));
                     }

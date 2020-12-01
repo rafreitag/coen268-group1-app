@@ -81,21 +81,8 @@ public class UserMatchDataDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(DROP_TABLE);
         db.execSQL(CREATE_TABLE);
+        db.close();
 
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String count = "SELECT count(*) FROM " + UserMatchDataContract.MatchData.TABLE_NAME;
-//        Cursor mcursor = db.rawQuery(count, null);
-//        mcursor.moveToFirst();
-//        int icount = mcursor.getInt(0);
-//
-//        if(icount == 0)
-//            return;
-//
-//        db.execSQL("DELETE FROM "+ UserMatchDataContract.MatchData.TABLE_NAME);
-//
-//        db.execSQL("UPDATE SQLITE_SEQUENCE SET seq = 0 WHERE NAME=" + UserMatchDataContract.MatchData.TABLE_NAME);
-//
-//        mcursor.close();
 
     }
 

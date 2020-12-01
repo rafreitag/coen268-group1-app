@@ -49,7 +49,13 @@ public class FindListFragment extends Fragment {
 
         cursor.moveToFirst();
 
+
+        Log.i("LIST_FRAG", "SELECT * FROM " + UserMatchDataContract.MatchData.TABLE_NAME +
+                " ORDER BY CAST(" + order + " AS INTEGER) DESC");
+
+        //populate the list with whatever is in the local database
         while(!cursor.isAfterLast()){
+            Log.i("LIST_FRAG", "HAS SOMETHING");
             int index = cursor.getColumnIndexOrThrow(UserMatchDataContract.MatchData.USER_ID);
             String user_id = cursor.getString(index);
 
