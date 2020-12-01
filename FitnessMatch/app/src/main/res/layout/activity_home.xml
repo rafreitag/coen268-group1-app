@@ -12,106 +12,113 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/homepage_backdrop" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="412dp"
-        android:layout_height="479dp"
+
+
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
         android:gravity="center"
-        android:orientation="vertical"
+        android:text="Welcome"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_welcome2"
-            android:layout_width="match_parent"
-            android:layout_height="67dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="0dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="Welcome"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tv_welcome_name"
+        android:layout_width="246dp"
+        android:layout_height="67dp"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
 
-        <TextView
-            android:id="@+id/tv_welcome"
-            android:layout_width="246dp"
-            android:layout_height="67dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="0dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+    <Button
+        android:id="@+id/btn_matchList"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#154F74"
+        android:onClick="matchList"
+        android:text="Find a fitness partner"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome_name" />
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="230dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="#154F74"
-            android:onClick="find"
-            android:text="Find a fitness partner"
-            app:cornerRadius="15dp" />
 
-        <Button
-            android:id="@+id/btn_progress"
-            android:layout_width="230dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
-            android:backgroundTint="@color/darkBlue"
-            android:onClick="progress"
-            android:text="Track your progress"
-            app:cornerRadius="15dp" />
+    <Button
+        android:id="@+id/btn_progress"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/darkBlue"
+        android:onClick="progress"
+        android:text="Track your progress"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_matchList" />
 
-        <Button
-            android:id="@+id/btn_progress2"
-            android:layout_width="230dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
-            android:backgroundTint="@color/darkBlue"
-            android:onClick="history"
-            android:text="Workout History"
-            app:cornerRadius="15dp" />
+    <Button
+        android:id="@+id/btn_preferences"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/darkBlue"
+        android:onClick="updatePreferences"
+        android:text="Update Preferences"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_progress" />
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_history"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/darkBlue"
+        android:onClick="history"
+        android:text="Workout History"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_preferences" />
 
     <Button
         android:id="@+id/btn_logout"
         android:layout_width="70dp"
         android:layout_height="35dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@android:color/tab_indicator_text"
         android:onClick="logout"
         android:text="LOGOUT"
         android:textSize="8sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.82" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--    <FrameLayout-->
-<!--        android:id="@+id/fragment_container"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
-
-
-<!--        <Button-->
-<!--            android:id="@+id/button4"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:onClick="find"-->
-<!--            android:text="Find" />-->
-
-<!--    </FrameLayout>-->

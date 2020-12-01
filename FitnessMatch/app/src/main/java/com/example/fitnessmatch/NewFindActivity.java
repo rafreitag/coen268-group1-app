@@ -19,9 +19,8 @@ import com.google.firebase.firestore.auth.User;
 
 public class NewFindActivity extends AppCompatActivity {
 
-    Preferences currentUserPreferences = new Preferences(true, false, true, false, true, false, true, false, true, false, true, false, true, 1, 2, 3, 96.212, -121.323, "other");
+    //Preferences currentUserPreferences; // = new Preferences(true, false, true, false, true, false, true, false, true, false, true, false, true, 1, 2, 3, 96.212, -121.323, "other");
     private FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +28,8 @@ public class NewFindActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_find);
         mAuth = FirebaseAuth.getInstance();
 
-        if (currentUserPreferences != null) {
-            createMatchDatabase(currentUserPreferences);
+        if (true) {
+            createMatchDatabase();
         }
         else{
             //popup saying that you need to fill out your preferences first
@@ -47,14 +46,12 @@ public class NewFindActivity extends AppCompatActivity {
 
 
 
-    public void createMatchDatabase(Preferences userPreferences){
+    public void createMatchDatabase(){
 
         String TAG = "createMatchDatabase";
         UserMatchDataDBHelper userMatchDataDBHelper = new UserMatchDataDBHelper(this);
 
         DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users");
-
-
 
         myDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -62,7 +59,11 @@ public class NewFindActivity extends AppCompatActivity {
 
                 userMatchDataDBHelper.clearData();
 
+
+                Preferences currentUserPreferences = snapshot.child(mAuth.getCurrentUser().getUid()).child("preferences").getValue(Preferences.class);
+
                 for (DataSnapshot iterateSnapshot : snapshot.getChildren()) {
+
 
                     String user_id = iterateSnapshot.getKey();
 
@@ -77,8 +78,8 @@ public class NewFindActivity extends AppCompatActivity {
 
                         String user_name = profile.getName();
 
-                        int match_score = userPreferences.calculateMatchScore(preference);
-                        double distance = userPreferences.calculateDistanceFrom(preference);
+                        int match_score = currentUserPreferences.calculateMatchScore(preference);
+                        double distance = currentUserPreferences.calculateDistanceFrom(preference);
 
                         Log.i(TAG, "COMPARED WITH USER: " + iterateSnapshot.child("profile").getValue(Profile.class).getName() +
                                 "\nMatch Score = " + match_score +
