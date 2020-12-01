@@ -84,25 +84,27 @@ public class ProgressMainActivity extends AppCompatActivity {
         UserGoalDBHelper dbHelper = new UserGoalDBHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        String selection = "=?";
+        String selection = UserGoalContract.Goal.USER + "=?" ;
         String[] selectionArg = new String[]{mUser};
-
         String orderBy = "CASE " + UserGoalContract.Goal.STATUS +
-                " WHEN 'in progress' THEN 0 WHEN 'todo' THEN 1 WHEN 'completed' THEN 2 END";
+                " WHEN 'in progress' THEN 0 WHEN 'todo' THEN 1 END";
 
         Cursor cursor = db.query(UserGoalContract.Goal.TABLE_NAME,null,
-                UserGoalContract.Goal.USER + "=?", new String[]{mUser}, null, null,
+                selection, selectionArg, null, null,
                 orderBy);
 
         String result = "";
         while(cursor.moveToNext()){
+
             String goal = cursor.getString(cursor.getColumnIndex(UserGoalContract.Goal.GOAL));
             String status = cursor.getString(cursor.getColumnIndex(UserGoalContract.Goal.STATUS));
             int id = cursor.getInt(cursor.getColumnIndex(UserGoalContract.Goal._ID));
 
-            mIDs.add(id);
-            mGoals.add(goal);
-            mStatuses.add(status);
+            if (!status.equals("completed")) {
+                mIDs.add(id);
+                mGoals.add(goal);
+                mStatuses.add(status);
+            }
         }
         db.close();
 
@@ -142,6 +144,8 @@ public class ProgressMainActivity extends AppCompatActivity {
         intent.putExtra("status", mStatuses.get(position));
         intent.putExtra("user", mUser);
         intent.putExtra("id", mIDs.get(position));
+        intent.putExtra("parent", "progress");
+
         startActivity(intent);
     }
 

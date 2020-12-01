@@ -6,11 +6,16 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class AddProgress extends AppCompatActivity {
     Button cancel_btn;
@@ -58,6 +63,7 @@ public class AddProgress extends AppCompatActivity {
     private void saveProgressIntoDatabase() {
         String goal = goal_input.getText().toString();
         String status = "";
+        Long milli = -1L;
 
         if(goal.isEmpty()) {
             Toast.makeText(this, "Goal cannot be empty", Toast.LENGTH_SHORT).show();
@@ -66,6 +72,22 @@ public class AddProgress extends AppCompatActivity {
 
         if(completed_rb.isChecked()){
             status = "completed";
+            //CHANGE
+            Date current = new Date();
+            current.setSeconds(0);
+            current.setMinutes(0);
+            current.setHours(0);
+
+
+            milli = current.getTime();
+            String largeNumberInString = String.valueOf(milli);
+            Long resultingNumber = Long.parseLong(largeNumberInString.substring(0, largeNumberInString.length()-3));
+            milli = resultingNumber * 1000;
+
+            Log.d("WUT", "date " + current);
+
+            Log.d("WUT", "added " + milli);
+
         }else if(in_progress_rb.isChecked()){
             status = "in progress";
         }else if(todo_rb.isChecked()){
@@ -79,6 +101,7 @@ public class AddProgress extends AppCompatActivity {
         contentValues.put(UserGoalContract.Goal.GOAL, goal);
         contentValues.put(UserGoalContract.Goal.STATUS, status);
         contentValues.put(UserGoalContract.Goal.USER, user);
+        contentValues.put(UserGoalContract.Goal.DATE, milli);
 
         long recordId =
                 db.insert(UserGoalContract.Goal.TABLE_NAME,null,contentValues);
