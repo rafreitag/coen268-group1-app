@@ -17,14 +17,13 @@
     android:padding="10dp">
 
     <androidx.cardview.widget.CardView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true"
         android:background="?android:attr/selectableItemBackground"
         android:scrollbars="vertical"
-        app:cardElevation="5dp"
-        app:cardCornerRadius="20dp">
+        card_view:cardElevation="5dp"
+        card_view:cardCornerRadius="20dp">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,28 +43,39 @@
                 android:text="name"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginEnd="32dp"
+                android:layout_marginStart="16dp"
                 android:text="distance"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/match_score" />
+                card_view:layout_constraintStart_toEndOf="@+id/match_score"
+                card_view:layout_constraintTop_toTopOf="@+id/match_score" />
 
             <TextView
                 android:id="@+id/match_score"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
+                android:gravity="left"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="match score"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/name"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
+                card_view:layout_constraintStart_toStartOf="@+id/name"
+                card_view:layout_constraintTop_toBottomOf="@+id/name" />
+
+            <Button
+                android:id="@+id/btn_send_req"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="SEND"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
