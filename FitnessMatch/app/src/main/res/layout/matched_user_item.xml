@@ -8,6 +8,8 @@
     android:layout_marginTop="10dp"
     android:layout_marginRight="15dp"
     android:layout_marginBottom="10dp"
+    android:background="@android:color/transparent"
+    android:clickable="false"
 
 
     android:orientation="vertical"
@@ -18,7 +20,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
         android:scrollbars="vertical"
         app:cardElevation="5dp"
         app:cardCornerRadius="20dp">
@@ -26,7 +29,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:background="?android:attr/selectableItemBackground"
+            >
+
 
             <TextView
                 android:id="@+id/name"

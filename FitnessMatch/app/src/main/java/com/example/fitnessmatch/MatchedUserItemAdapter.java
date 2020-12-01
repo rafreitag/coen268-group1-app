@@ -59,6 +59,11 @@ public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
             tv_match_score.setTextColor(mContext.getColor(R.color.red));
         }
 
+        //button tagging
+        //https://guides.codepath.com/android/Using-an-ArrayAdapter-with-ListView
+        //use position to get row and then get uid
+        //call sendRequestTo (move it here)
+
         return convertView;
 
     }
