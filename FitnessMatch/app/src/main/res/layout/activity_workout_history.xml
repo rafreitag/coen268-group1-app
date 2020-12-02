@@ -128,11 +128,14 @@
 
             <ListView
                 android:id="@+id/completedList"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:divider="@android:color/transparent"
                 android:dividerHeight="5.0sp"
+                android:paddingLeft="10dp"
+                android:paddingTop="12dp"
+                android:paddingRight="10dp"
                 android:scrollbarAlwaysDrawVerticalTrack="true">
 
             </ListView>
