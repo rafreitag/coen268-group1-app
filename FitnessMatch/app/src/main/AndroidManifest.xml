@@ -71,6 +71,7 @@
             ></activity>
         <activity android:name=".RequestsActivity"
             android:label="Requests"
+            android:parentActivityName=".HomeActivity"
             ></activity>
 
     </application>

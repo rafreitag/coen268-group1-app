@@ -76,7 +76,7 @@ public class WorkoutHistoryActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         mUser = intent.getStringExtra("user");
-
+        compactCalendar.invalidate();
         compactCalendar.setUseThreeLetterAbbreviation(true);
 
         Date current_date = new Date();

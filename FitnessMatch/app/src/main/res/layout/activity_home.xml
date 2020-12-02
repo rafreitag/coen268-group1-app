@@ -5,22 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/homepage_backdrop" />
 
-
-
+    <ImageView
+        android:id="@+id/settings_icon"
+        android:layout_width="50dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="156dp"
+        android:elevation="10dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/preferences_icon"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/tv_welcome"
         android:layout_width="match_parent"
         android:layout_height="67dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:text="Welcome"
@@ -29,98 +45,195 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/tv_welcome_name"
         android:layout_width="246dp"
         android:layout_height="67dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="44dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:layout_constraintVertical_bias="0.016" />
 
-    <Button
-        android:id="@+id/btn_matchList"
-        android:layout_width="230dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:backgroundTint="#154F74"
-        android:onClick="matchList"
-        android:text="Find a fitness partner"
-        app:cornerRadius="15dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="298dp"
+        android:layout_height="327dp"
+        android:layout_marginBottom="204dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_welcome_name" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_progress"
-        android:layout_width="230dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="@color/darkBlue"
-        android:onClick="progress"
-        android:text="Track your progress"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_matchList" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btn_matchList"
+                    android:layout_width="120dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="top"
+                    android:backgroundTint="#154F74"
+                    android:gravity="bottom|center_horizontal"
+                    android:onClick="matchList"
+                    android:text="Find"
+                    app:cornerRadius="15dp" />
+
+                <ImageView
+                    android:id="@+id/find_icon"
+                    android:layout_width="110dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="10dp"
+                    android:elevation="10dp"
+                    android:tintMode="src_in"
+                    app:srcCompat="@drawable/find_icon"
+                    app:tint="@color/white" />
+            </FrameLayout>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <FrameLayout
+                android:id="@+id/frame2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn_requests"
+                    android:layout_width="120dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:backgroundTint="@color/darkBlue"
+                    android:gravity="bottom|center_horizontal"
+                    android:onClick="viewRequests"
+                    android:text="Requests"
+                    app:cornerRadius="15dp" />
+
+                <ImageView
+                    android:id="@+id/request_icon"
+                    android:layout_width="110dp"
+                    android:layout_height="85dp"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="10dp"
+                    android:elevation="10dp"
+                    app:srcCompat="@drawable/matches_icon" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btn_progress"
+                    android:layout_width="120dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:backgroundTint="@color/darkBlue"
+                    android:gravity="bottom|center_horizontal"
+                    android:onClick="progress"
+                    android:text="Track"
+                    app:cornerRadius="15dp" />
+
+                <ImageView
+                    android:id="@+id/track_icon"
+                    android:layout_width="110dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="12dp"
+                    android:elevation="10dp"
+                    android:tintMode="src_in"
+                    app:srcCompat="@drawable/progress_icon"
+                    app:tint="#FFFFFF"
+                    tools:ignore="MissingConstraints" />
+            </FrameLayout>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn_history"
+                    android:layout_width="120dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:backgroundTint="@color/darkBlue"
+                    android:gravity="bottom|center_horizontal"
+                    android:onClick="history"
+                    android:text="History"
+                    app:cornerRadius="15dp" />
+
+                <ImageView
+                    android:id="@+id/history_icon"
+                    android:layout_width="110dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="5dp"
+                    android:backgroundTintMode="src_in"
+                    android:elevation="5dp"
+                    android:tintMode="src_in"
+                    app:srcCompat="@drawable/history_icon"
+                    app:tint="#FFFFFF"
+                    tools:ignore="MissingConstraints" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_preferences"
-        android:layout_width="230dp"
-        android:layout_height="70dp"
+        android:layout_width="143dp"
+        android:layout_height="81dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="132dp"
         android:backgroundTint="@color/darkBlue"
+        android:gravity="bottom|center_horizontal"
         android:onClick="updatePreferences"
-        android:text="Update Preferences"
+        android:text="Preferences"
         app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_progress" />
-
-    <Button
-        android:id="@+id/btn_history"
-        android:layout_width="230dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="@color/darkBlue"
-        android:onClick="history"
-        android:text="Workout History"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_preferences" />
-
-    <Button
-        android:id="@+id/btn_requests"
-        android:layout_width="230dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="@color/darkBlue"
-        android:onClick="viewRequests"
-        android:text="Partner Requests"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_history" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_logout"
