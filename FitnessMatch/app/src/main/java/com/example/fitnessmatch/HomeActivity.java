@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Retrieve current 'profile' information of user (name and email)
         DatabaseReference myProfile = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("profile");
-        myProfile.addValueEventListener(new ValueEventListener() {
+        myProfile.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Profile profile = snapshot.getValue(Profile.class);

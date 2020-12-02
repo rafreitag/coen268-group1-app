@@ -64,7 +64,7 @@ public class RequestListFragment extends Fragment {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getUid()).child("requests");
         
-        myDatabase.addValueEventListener(new ValueEventListener(){
+        myDatabase.addListenerForSingleValueEvent(new ValueEventListener(){
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 requestIDs.clear();
                 for (DataSnapshot iterateSnapshot : snapshot.getChildren()) {
@@ -96,8 +96,7 @@ public class RequestListFragment extends Fragment {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users");
 
-        myDatabase.addValueEventListener(new ValueEventListener() {
-
+        myDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // One's own preferences
@@ -128,8 +127,6 @@ public class RequestListFragment extends Fragment {
                 }
                 RequestedUserItemAdapter requestedUserItemAdapter = new RequestedUserItemAdapter(getActivity(), R.layout.request_user_item, matchedUserList);
                 listView.setAdapter(requestedUserItemAdapter);
-
-
                 }
 
 
