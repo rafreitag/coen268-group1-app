@@ -75,8 +75,6 @@ public class ProgressMainActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     private void getAllStudentInfo() {
@@ -182,13 +180,7 @@ public class ProgressMainActivity extends AppCompatActivity {
             statusTV.setText(rStatuses[position]);
             goalIV.setImageResource((rImages[position]));
 
-
-
             return row;
         }
-
     }
-
-
-
 }

@@ -61,12 +61,6 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser == null){
-//            Toast.makeText(this, "Not logged in", Toast.LENGTH_SHORT).show();
-//        }
-//        else{
-//            Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show();
-//        }
     }
 
     @Override

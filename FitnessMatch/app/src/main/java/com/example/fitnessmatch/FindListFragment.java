@@ -45,8 +45,6 @@ public class FindListFragment extends Fragment {
         listView = view.findViewById(R.id.listViewUser);
         createMatchDatabase();
 
-        //sendRequestTo("0Gi8Xeb4nhPYg28JkKg22fRZbQJ2");
-
         return view;
     }
 
@@ -68,9 +66,6 @@ public class FindListFragment extends Fragment {
 
         cursor.moveToFirst();
 
-
-        //Log.i("LIST_FRAG", "SELECT * FROM " + UserMatchDataContract.MatchData.TABLE_NAME +
-        //          " ORDER BY CAST(" + order + " AS INTEGER) DESC");
 
         //populate the list with whatever is in the local database
         while(!cursor.isAfterLast()){
@@ -119,7 +114,6 @@ public class FindListFragment extends Fragment {
 
                     String user_id = iterateSnapshot.getKey();
 
-                    //Log.i(TAG, user_id +  " compared with " + mAuth.getCurrentUser().getUid());
 
                     if(!user_id.equals(mAuth.getCurrentUser().getUid())) {
 
@@ -133,9 +127,6 @@ public class FindListFragment extends Fragment {
                         int match_score = currentUserPreferences.calculateMatchScore(preference);
                         double distance = currentUserPreferences.calculateDistanceFrom(preference);
 
-//                        Log.i(TAG, "COMPARED WITH USER: " + iterateSnapshot.child("profile").getValue(Profile.class).getName() +
-//                                "\nMatch Score = " + match_score +
-//                                "\nDistance = " + String.format("%.2f", distance));
 
                         userMatchDataDBHelper.addData(user_id, user_name, String.format("%.2f", distance), String.valueOf(match_score));
                     }

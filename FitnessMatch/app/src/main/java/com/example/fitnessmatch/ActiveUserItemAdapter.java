@@ -46,8 +46,6 @@ public class ActiveUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
         String distance = getItem(position).getDistance();
         String match_score = getItem(position).getMatch_score();
 
-        //MatchedUserItem matchedUserItem = new MatchedUserItem(user_id, name, distance, match_score);
-
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
@@ -87,11 +85,6 @@ public class ActiveUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
             }
         });
 
-
-
         return convertView;
-
     }
-
-
 }

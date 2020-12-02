@@ -149,12 +149,6 @@ public class Find2Activity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser == null){
-//            Toast.makeText(this, "Not logged in", Toast.LENGTH_SHORT).show();
-//        }
-//        else{
-//            Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show();
-//        }
     }
 
     // Set all preferences (for page 1)

@@ -102,12 +102,6 @@ public class SignUpActivity extends AppCompatActivity {
                     // create requests child to hold all requests
                     usersRef.child("requests").setValue(null);
 
-
-
-
-
-
-
                     // Go to home page
                     Intent a = new Intent(SignUpActivity.this, HomeActivity.class);
                     startActivity(a);
@@ -120,27 +114,6 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        // 3: Add the record to the database
-//        UserDbHelper dbHelper = new UserDbHelper(this);
-//        SQLiteDatabase db = dbHelper.getWritableDatabase();
-//
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put(UserContractInfo.Users.USER_NAME, name);
-//        contentValues.put(UserContractInfo.Users.USER_EMAIL, email);
-//        contentValues.put(UserContractInfo.Users.USER_PASSWORD, password);
-//
-//        long recordId = db.insert(UserContractInfo.Users.TABLE_NAME, null, contentValues);
-//        db.close();
-//
-//        if(recordId == -1) {
-//            Toast.makeText(this, "Insertion failed", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Log.i(TAG, "Successfully added user " + name + " in the db");
-//            Intent intent = new Intent(this, HomeActivity.class);
-//            intent.putExtra("Name", name);
-//            startActivity(intent);
-//        }
     }
 
     public void back_to_login(View view){

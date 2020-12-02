@@ -70,38 +70,6 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
-//        UserDbHelper dbHelper = new UserDbHelper(this);
-//        SQLiteDatabase db = dbHelper.getWritableDatabase();
-//
-//        String[] columns = {UserContractInfo.Users.USER_NAME, UserContractInfo.Users.USER_EMAIL, UserContractInfo.Users.USER_PASSWORD};
-//        String selection = UserContractInfo.Users.USER_EMAIL + "=?";
-//        String[] selectionArgs = {email};
-//        Cursor cursor = db.query(UserContractInfo.Users.TABLE_NAME, columns, selection, selectionArgs,
-//                null, null, UserContractInfo.Users.USER_EMAIL);
-//
-//        int count = cursor.getCount();
-//        Log.i(TAG, "Count: " + count);
-//        String result = cursor.getString(cursor.getColumnIndex(UserContractInfo.Users.USER_PASSWORD));
-//        String name = cursor.getString(cursor.getColumnIndex(UserContractInfo.Users.USER_NAME));
-//        Log.i(TAG, "Password: " + result);
-//        db.close();
-//
-//        if(result.isEmpty()) {
-//            Log.i(TAG, "No user exists with that email.");
-//            Toast.makeText(this, "No user exists with that email.", Toast.LENGTH_SHORT).show();
-//            return;
-//        } else if(result != password) {
-//            Log.i(TAG, "Incorrect password.");
-//            Toast.makeText(this, "Incorrect password.", Toast.LENGTH_SHORT).show();
-//            return;
-//        } else {
-//            // login
-//            // start second activity
-            // Log.i(TAG, "Successfully logged in as " + name);
-            //Intent intent = new Intent(this, HomeActivity.class);
-            // intent.putExtra("Name", name);
-//            startActivity(intent);
-//        }
     }
 
     public void back_to_sign_up(View view){

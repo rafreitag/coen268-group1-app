@@ -42,7 +42,6 @@ public class ActiveListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -54,20 +53,7 @@ public class ActiveListFragment extends Fragment {
         listView = view.findViewById(R.id.listViewUser);
         textView = view.findViewById(R.id.textView8);
         getRequests();
-        Log.i("SIZE ON CREATE", String.valueOf(requestIDs.size()));
         populateList();
-        if(flag){
-//            textView.setVisibility(View.VISIBLE);
-            Log.i("EMPTY", "test");
-        }
-        else {
-            Log.i("NOT EMPTY", "test");
-//            textView.setVisibility(View.INVISIBLE);
-//            populateList();
-        }
-
-
-        //sendRequestTo("0Gi8Xeb4nhPYg28JkKg22fRZbQJ2");
 
         return view;
     }
@@ -87,7 +73,6 @@ public class ActiveListFragment extends Fragment {
                         requestIDs.add(user_id);
                     }
                 }
-                Log.i("SIZE ON DATA CHANGE", String.valueOf(requestIDs.size()));
             }
 
             @Override
@@ -99,7 +84,6 @@ public class ActiveListFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        Log.i("SIZE GET REQUESTS", String.valueOf(requestIDs.size()));
     }
 
     public void populateList(){
@@ -138,14 +122,10 @@ public class ActiveListFragment extends Fragment {
                 }
                 else {
                     //not empty
-
                     textView.setVisibility(View.INVISIBLE);
                     ActiveUserItemAdapter activeUserItemAdapter = new ActiveUserItemAdapter(getActivity(), R.layout.active_user_item, matchedUserList);
                     listView.setAdapter(activeUserItemAdapter);
                 }
-
-
-
             }
 
 
