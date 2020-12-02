@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="other:"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_swimming" />
 
@@ -165,7 +165,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="volleyball"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/cb_basketball"
         app:layout_constraintTop_toBottomOf="@+id/cb_basketball" />
 
@@ -174,7 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="soccer"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/cb_ultimate_frisbee"
         app:layout_constraintTop_toBottomOf="@+id/cb_ultimate_frisbee" />
 

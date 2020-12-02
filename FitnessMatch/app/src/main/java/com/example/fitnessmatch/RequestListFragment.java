@@ -49,9 +49,10 @@ public class RequestListFragment extends Fragment {
     public void getRequests(){
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getUid()).child("requests");
-
+        
         myDatabase.addValueEventListener(new ValueEventListener(){
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                requestIDs.clear();
                 for (DataSnapshot iterateSnapshot : snapshot.getChildren()) {
                     String user_id = iterateSnapshot.getKey();
                     String value = iterateSnapshot.getValue(String.class);
