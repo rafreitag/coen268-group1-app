@@ -1,7 +1,13 @@
 package com.example.fitnessmatch;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -24,19 +26,29 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequestListFragment extends Fragment {
+
+public class ActiveListFragment extends Fragment {
     ListView listView;
     TextView textView;
     static List<String> requestIDs = new ArrayList<String>();
     static boolean flag = false;
 
+
+    public ActiveListFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_find_list, container, false);
         Log.i("LIST_FRAG", "fragment created");
         listView = view.findViewById(R.id.listViewUser);
@@ -63,14 +75,14 @@ public class RequestListFragment extends Fragment {
     public void getRequests(){
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getUid()).child("requests");
-        
+
         myDatabase.addListenerForSingleValueEvent(new ValueEventListener(){
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 requestIDs.clear();
                 for (DataSnapshot iterateSnapshot : snapshot.getChildren()) {
                     String user_id = iterateSnapshot.getKey();
                     String value = iterateSnapshot.getValue(String.class);
-                    if(value.equals("RECV")){
+                    if(value.equals("ACPT")){
                         Log.i("Recieving Requests", user_id +  " " + value);
                         requestIDs.add(user_id);
                     }
@@ -97,6 +109,7 @@ public class RequestListFragment extends Fragment {
         DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users");
 
         myDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // One's own preferences
@@ -119,13 +132,16 @@ public class RequestListFragment extends Fragment {
 
                 if (!flag){
                     //empty
+                    textView.setText("No Active Partners");
                     textView.setVisibility(View.VISIBLE);
+
                 }
                 else {
                     //not empty
+
                     textView.setVisibility(View.INVISIBLE);
-                    RequestedUserItemAdapter requestedUserItemAdapter = new RequestedUserItemAdapter(getActivity(), R.layout.request_user_item, matchedUserList);
-                    listView.setAdapter(requestedUserItemAdapter);
+                    ActiveUserItemAdapter activeUserItemAdapter = new ActiveUserItemAdapter(getActivity(), R.layout.active_user_item, matchedUserList);
+                    listView.setAdapter(activeUserItemAdapter);
                 }
 
 

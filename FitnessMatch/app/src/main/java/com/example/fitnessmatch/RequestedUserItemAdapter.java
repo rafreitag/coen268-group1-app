@@ -2,6 +2,7 @@ package com.example.fitnessmatch;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,15 +76,18 @@ public class RequestedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
             @Override
             public void onClick(View v) {
                 accept_request(user_id);
+                btn_accept.setEnabled(false);
+                btn_decline.setEnabled(false);
             }
         });
         btn_decline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 decline_request(user_id);
+                btn_accept.setEnabled(false);
+                btn_decline.setEnabled(false);
             }
         });
-
         return convertView;
     }
 
@@ -104,13 +108,12 @@ public class RequestedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
             }
         });
 
-
         // Update the other user's requests
         DatabaseReference otherReference = FirebaseDatabase.getInstance().getReference("users").child(user_id).child("requests");
         otherReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                otherReference.child(mAuth.getCurrentUser().getUid()).setValue("SENT");
+                otherReference.child(mAuth.getCurrentUser().getUid()).setValue("ACPT");
             }
 
             @Override
@@ -118,11 +121,6 @@ public class RequestedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
 
             }
         });
-
-        // Go back to home activity
-        Intent intent = new Intent(getContext(), HomeActivity.class);
-        mContext.startActivity(intent);
-
         Toast.makeText(getContext(), "Partner Accepted", Toast.LENGTH_SHORT).show();
     }
 
@@ -143,7 +141,6 @@ public class RequestedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
             }
         });
 
-
         // Update the other user's requests
         DatabaseReference otherReference = FirebaseDatabase.getInstance().getReference("users").child(user_id).child("requests");
         otherReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -157,10 +154,6 @@ public class RequestedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
 
             }
         });
-
-        // Go back to home activity
-        Intent intent = new Intent(getContext(), HomeActivity.class);
-        mContext.startActivity(intent);
 
         Toast.makeText(getContext(), "Partner Declined", Toast.LENGTH_SHORT).show();
     }

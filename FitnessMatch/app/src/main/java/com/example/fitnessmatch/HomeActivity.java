@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Retrieve current 'profile' information of user (name and email)
         DatabaseReference myProfile = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("profile");
-        myProfile.addValueEventListener(new ValueEventListener() {
+        myProfile.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Profile profile = snapshot.getValue(Profile.class);
@@ -56,22 +56,6 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-//        DatabaseReference myRequests = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("requests");
-//        myRequests.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//
-//
-//                myRequests.child("32fWef94f3s").setValue("sent");
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
 
 
 
@@ -117,6 +101,12 @@ public class HomeActivity extends AppCompatActivity {
     // requests activity
     public void viewRequests(View view){
         Intent intent = new Intent(this, RequestsActivity.class);
+        startActivity(intent);
+    }
+
+    // active users activity
+    public void viewActiveUsers(View view){
+        Intent intent = new Intent(this, ActiveUserActivity.class);
         startActivity(intent);
     }
 

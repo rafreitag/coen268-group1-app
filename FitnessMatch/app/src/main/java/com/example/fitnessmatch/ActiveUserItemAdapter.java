@@ -26,12 +26,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
+public class ActiveUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
     private Context mContext;
     private int mResource;
     HashSet<Integer> sentList;
 
-    public MatchedUserItemAdapter(Context context, int resource,  @NonNull ArrayList<MatchedUserItem> objects) {
+    public ActiveUserItemAdapter(Context context, int resource,  @NonNull ArrayList<MatchedUserItem> objects) {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;
@@ -54,7 +54,7 @@ public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
         TextView tv_user_name = (TextView) convertView.findViewById(R.id.name);
         TextView tv_distance = (TextView) convertView.findViewById(R.id.distance);
         TextView tv_match_score = (TextView) convertView.findViewById(R.id.match_score);
-        Button btn_send_request = (Button) convertView.findViewById(R.id.btn_send_req);
+        TextView tv_email = (TextView) convertView.findViewById(R.id.email);
 
         tv_user_name.setText(name);
         tv_distance.setText(distance + "mi");
@@ -73,31 +73,17 @@ public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
             tv_match_score.setTextColor(mContext.getColor(R.color.red));
         }
 
-        if (sentList.contains(new Integer(position))){
-            //btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.lightGray));
-            btn_send_request.setEnabled(false);
-
-            btn_send_request.setText("SENT");
-        }
-        else{
-            //btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.darkBlue));
-            btn_send_request.setText("SEND");
-        }
-
-        //button tagging
-        //https://guides.codepath.com/android/Using-an-ArrayAdapter-with-ListView
-        btn_send_request.setOnClickListener(new View.OnClickListener() {
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("users").child(user_id).child("profile");
+        userReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String userEmail = snapshot.getValue(Profile.class).getEmail();
+                tv_email.setText(userEmail);
+            }
 
-                sendRequestTo(user_id);
-                //verification button
-                //change color and stuff
-                //btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.lightGray));
-                btn_send_request.setEnabled(false);
-                btn_send_request.setText("SENT");
-                sentList.add(position);
-                //toast?
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
@@ -107,36 +93,5 @@ public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
 
     }
 
-    //can make request handler class later to hold all request stuff
-    public void sendRequestTo(String receiver){
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        String TAG = "sendRequestTo";
-        Log.i(TAG, "request sent from user " + mAuth.getCurrentUser().getUid() + " to user " + receiver);
 
-        DatabaseReference senderReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("requests");
-        senderReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                senderReference.child(receiver).setValue("SENT");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        DatabaseReference receiverReference = FirebaseDatabase.getInstance().getReference("users").child(receiver).child("requests");
-        receiverReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                receiverReference.child(mAuth.getCurrentUser().getUid()).setValue("RECV");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 }
