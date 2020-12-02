@@ -17,20 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/homepage_backdrop" />
 
-    <ImageView
-        android:id="@+id/settings_icon"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="156dp"
-        android:elevation="10dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/preferences_icon"
-        tools:ignore="MissingConstraints" />
-
     <TextView
         android:id="@+id/tv_welcome"
         android:layout_width="match_parent"
@@ -71,9 +57,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="298dp"
-        android:layout_height="327dp"
-        android:layout_marginBottom="204dp"
+        android:layout_width="294dp"
+        android:layout_height="447dp"
+        android:layout_marginBottom="112dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/background"
@@ -84,7 +70,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <FrameLayout
@@ -93,19 +79,20 @@
 
                 <Button
                     android:id="@+id/btn_matchList"
-                    android:layout_width="120dp"
-                    android:layout_height="130dp"
+                    android:layout_width="115dp"
+                    android:layout_height="120dp"
                     android:layout_gravity="top"
                     android:backgroundTint="#154F74"
                     android:gravity="bottom|center_horizontal"
                     android:onClick="matchList"
                     android:text="Find"
+                    android:textSize="14sp"
                     app:cornerRadius="15dp" />
 
                 <ImageView
                     android:id="@+id/find_icon"
                     android:layout_width="110dp"
-                    android:layout_height="95dp"
+                    android:layout_height="82dp"
                     android:layout_gravity="center|top"
                     android:layout_marginTop="10dp"
                     android:elevation="10dp"
@@ -120,30 +107,102 @@
                 android:layout_weight="1" />
 
             <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_preferences"
+                    android:layout_width="115dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="right|top"
+                    android:backgroundTint="@color/darkBlue"
+                    android:gravity="bottom|center_horizontal"
+                    android:onClick="updatePreferences"
+                    android:text="Edit"
+                    android:textSize="14sp"
+                    app:cornerRadius="15dp" />
+
+                <ImageView
+                    android:id="@+id/settings_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center|top"
+                    android:elevation="10dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/preferences_icon"
+                    tools:ignore="MissingConstraints" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
                 android:id="@+id/frame2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/btn_requests"
-                    android:layout_width="120dp"
-                    android:layout_height="130dp"
+                    android:layout_width="115dp"
+                    android:layout_height="120dp"
                     android:layout_gravity="center_horizontal|top"
                     android:backgroundTint="@color/darkBlue"
                     android:gravity="bottom|center_horizontal"
                     android:onClick="viewRequests"
                     android:text="Requests"
+                    android:textSize="14sp"
                     app:cornerRadius="15dp" />
 
                 <ImageView
                     android:id="@+id/request_icon"
                     android:layout_width="110dp"
-                    android:layout_height="85dp"
+                    android:layout_height="79dp"
                     android:layout_gravity="center|top"
                     android:layout_marginTop="10dp"
                     android:elevation="10dp"
                     app:srcCompat="@drawable/matches_icon" />
 
+            </FrameLayout>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_accepted"
+                    android:layout_width="115dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/darkBlue"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="Accepted"
+                    android:textSize="14sp"
+                    app:cornerRadius="15.0sp" />
+
+                <ImageView
+                    android:id="@+id/accepted_icon"
+                    android:layout_width="110dp"
+                    android:layout_height="79dp"
+                    android:layout_gravity="center|top"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:elevation="10dp"
+                    android:tintMode="src_in"
+                    app:srcCompat="@drawable/accepted_icon"
+                    app:tint="@color/white" />
             </FrameLayout>
 
         </LinearLayout>
@@ -159,19 +218,20 @@
 
                 <Button
                     android:id="@+id/btn_progress"
-                    android:layout_width="120dp"
-                    android:layout_height="130dp"
+                    android:layout_width="115dp"
+                    android:layout_height="120dp"
                     android:layout_gravity="center_horizontal|top"
                     android:backgroundTint="@color/darkBlue"
                     android:gravity="bottom|center_horizontal"
                     android:onClick="progress"
                     android:text="Track"
+                    android:textSize="14sp"
                     app:cornerRadius="15dp" />
 
                 <ImageView
                     android:id="@+id/track_icon"
                     android:layout_width="110dp"
-                    android:layout_height="80dp"
+                    android:layout_height="73dp"
                     android:layout_gravity="center|top"
                     android:layout_marginTop="12dp"
                     android:elevation="10dp"
@@ -192,13 +252,14 @@
 
                 <Button
                     android:id="@+id/btn_history"
-                    android:layout_width="120dp"
-                    android:layout_height="130dp"
+                    android:layout_width="115dp"
+                    android:layout_height="120dp"
                     android:layout_gravity="center_horizontal|top"
                     android:backgroundTint="@color/darkBlue"
                     android:gravity="bottom|center_horizontal"
                     android:onClick="history"
                     android:text="History"
+                    android:textSize="14sp"
                     app:cornerRadius="15dp" />
 
                 <ImageView
@@ -218,22 +279,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_preferences"
-        android:layout_width="143dp"
-        android:layout_height="81dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="132dp"
-        android:backgroundTint="@color/darkBlue"
-        android:gravity="bottom|center_horizontal"
-        android:onClick="updatePreferences"
-        android:text="Preferences"
-        app:cornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_logout"
