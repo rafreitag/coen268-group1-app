@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,7 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +26,9 @@ import java.util.List;
 
 public class RequestListFragment extends Fragment {
     ListView listView;
-    List<String> requestIDs = new ArrayList<String>();
+    TextView textView;
+    static List<String> requestIDs = new ArrayList<String>();
+    static boolean flag = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,20 @@ public class RequestListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_find_list, container, false);
         Log.i("LIST_FRAG", "fragment created");
         listView = view.findViewById(R.id.listViewUser);
+        textView = view.findViewById(R.id.textView8);
         getRequests();
+        Log.i("SIZE ON CREATE", String.valueOf(requestIDs.size()));
         populateList();
+        if(flag){
+//            textView.setVisibility(View.VISIBLE);
+            Log.i("EMPTY", "test");
+        }
+        else {
+            Log.i("NOT EMPTY", "test");
+//            textView.setVisibility(View.INVISIBLE);
+//            populateList();
+        }
+
 
         //sendRequestTo("0Gi8Xeb4nhPYg28JkKg22fRZbQJ2");
 
@@ -61,6 +75,7 @@ public class RequestListFragment extends Fragment {
                         requestIDs.add(user_id);
                     }
                 }
+                Log.i("SIZE ON DATA CHANGE", String.valueOf(requestIDs.size()));
             }
 
             @Override
@@ -72,15 +87,17 @@ public class RequestListFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        Log.i("SIZE GET REQUESTS", String.valueOf(requestIDs.size()));
     }
 
     public void populateList(){
+        flag = false;
         ArrayList<MatchedUserItem> matchedUserList = new ArrayList<>();
-
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users");
 
         myDatabase.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // One's own preferences
@@ -88,6 +105,7 @@ public class RequestListFragment extends Fragment {
                 for (DataSnapshot iterateSnapshot : snapshot.getChildren()) {
                     String user_id = iterateSnapshot.getKey();
                     if(requestIDs.contains(user_id)) {
+                        flag = true;
                         Preferences preference = iterateSnapshot.child("preferences").getValue(Preferences.class);
                         Profile profile = iterateSnapshot.child("profile").getValue(Profile.class);
                         String user_name = profile.getName();
@@ -98,22 +116,20 @@ public class RequestListFragment extends Fragment {
                         MatchedUserItem item = new MatchedUserItem(user_id, user_name, String.format("%.2f", distance), String.valueOf(match_score));
                         matchedUserList.add(item);
                     }
-                    //Log.i(TAG, user_id +  " compared with " + mAuth.getCurrentUser().getUid());
-//                    if(!user_id.equals(mAuth.getCurrentUser().getUid())) {
-//                        Preferences preference = iterateSnapshot.child("preferences").getValue(Preferences.class);
-//                        Profile profile = iterateSnapshot.child("profile").getValue(Profile.class);
-//                        String user_name = profile.getName();
-//
-//                        int match_score = currentUserPreferences.calculateMatchScore(preference);
-//                        double distance = currentUserPreferences.calculateDistanceFrom(preference);
-//
-////                        Log.i(TAG, "COMPARED WITH USER: " + iterateSnapshot.child("profile").getValue(Profile.class).getName() +
-////                                "\nMatch Score = " + match_score +
-////                                "\nDistance = " + String.format("%.2f", distance));
+                }
 
-                    }
+                if (!flag){
+                    //empty
+                    textView.setVisibility(View.VISIBLE);
+                }
+                else {
+                    //not empty
+                    textView.setVisibility(View.INVISIBLE);
+                }
                 RequestedUserItemAdapter requestedUserItemAdapter = new RequestedUserItemAdapter(getActivity(), R.layout.request_user_item, matchedUserList);
                 listView.setAdapter(requestedUserItemAdapter);
+
+
                 }
 
 

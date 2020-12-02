@@ -14,8 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,12 +91,33 @@ public class RequestedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         // Update current user's requests
-        DatabaseReference myreference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("requests");
-        myreference.child(user_id).setValue("ACPT");
+        DatabaseReference myReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("requests");
+        myReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                myReference.child(user_id).setValue("ACPT");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         // Update the other user's requests
-        DatabaseReference otherreference = FirebaseDatabase.getInstance().getReference("users").child(user_id).child("requests");
-        otherreference.child(mAuth.getCurrentUser().getUid()).setValue("ACPT");
+        DatabaseReference otherReference = FirebaseDatabase.getInstance().getReference("users").child(user_id).child("requests");
+        otherReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                otherReference.child(mAuth.getCurrentUser().getUid()).setValue("SENT");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         // Go back to home activity
         Intent intent = new Intent(getContext(), HomeActivity.class);
@@ -106,12 +130,33 @@ public class RequestedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         // Update current user's requests
-        DatabaseReference myreference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("requests");
-        myreference.child(user_id).setValue("DECL");
+        DatabaseReference myReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("requests");
+        myReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                myReference.child(user_id).setValue("DECL");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         // Update the other user's requests
-        DatabaseReference otherreference = FirebaseDatabase.getInstance().getReference("users").child(user_id).child("requests");
-        otherreference.child(mAuth.getCurrentUser().getUid()).setValue("DECL");
+        DatabaseReference otherReference = FirebaseDatabase.getInstance().getReference("users").child(user_id).child("requests");
+        otherReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                otherReference.child(mAuth.getCurrentUser().getUid()).setValue("DECL");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         // Go back to home activity
         Intent intent = new Intent(getContext(), HomeActivity.class);
