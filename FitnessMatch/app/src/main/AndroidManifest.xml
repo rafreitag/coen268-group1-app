@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessMatch">
         <activity android:name=".ActiveUserActivity"
-            android:label="Partners"></activity>
+            android:label="Partners"
+            android:parentActivityName=".HomeActivity"></activity>
         <activity
             android:name=".WorkoutHistoryActivity"
             android:label="History"
