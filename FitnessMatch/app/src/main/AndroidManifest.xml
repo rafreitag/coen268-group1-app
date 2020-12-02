@@ -13,7 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessMatch">
+<<<<<<< HEAD
 
+=======
+        <activity android:name=".ActiveUserActivity"
+            android:label="Partners"
+            android:parentActivityName=".HomeActivity"></activity>
+>>>>>>> 817f349c9bc5ed38406a9afb4481fb69f6f0c53a
         <activity
             android:name=".WorkoutHistoryActivity"
             android:label="History"
@@ -61,7 +67,7 @@
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".NewFindActivity"
-            android:label="Matches"
+            android:label="Find"
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".RequestsActivity"

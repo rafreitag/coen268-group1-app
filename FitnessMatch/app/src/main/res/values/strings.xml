@@ -4,10 +4,10 @@
     <string name="title_activity_add_progress">AddProgress</string>
     <string name="login_name">Login</string>
     <string name="signup_name">Sign Up</string>
-    <string name="find_name">Find</string>
+    <string name="find_name">Edit</string>
     <string name="edit_name">Edit</string>
     <string name="add_name">Add</string>
     <string name="home_name">Home</string>
-    <string name="progress_name">Progress</string>
+    <string name="progress_name">Track</string>
 
 </resources>
