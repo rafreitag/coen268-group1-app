@@ -57,22 +57,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-//        DatabaseReference myRequests = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("requests");
-//        myRequests.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//
-//
-//                myRequests.child("32fWef94f3s").setValue("sent");
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
 
 
 

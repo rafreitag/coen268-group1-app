@@ -74,11 +74,13 @@ public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
         }
 
         if (sentList.contains(new Integer(position))){
-            btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.lightGray));
+            //btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.lightGray));
+            btn_send_request.setEnabled(false);
+
             btn_send_request.setText("SENT");
         }
         else{
-            btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.darkBlue));
+            //btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.darkBlue));
             btn_send_request.setText("SEND");
         }
 
@@ -91,7 +93,8 @@ public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
                 sendRequestTo(user_id);
                 //verification button
                 //change color and stuff
-                btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.lightGray));
+                //btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.lightGray));
+                btn_send_request.setEnabled(false);
                 btn_send_request.setText("SENT");
                 sentList.add(position);
                 //toast?

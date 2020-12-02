@@ -18,6 +18,7 @@
         android:clickable="false"
         android:scrollbars="vertical"
         card_view:cardCornerRadius="20dp"
+        android:background="@android:color/transparent"
         card_view:cardElevation="5dp">
 
 

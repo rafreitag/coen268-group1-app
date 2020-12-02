@@ -76,7 +76,7 @@ public class ActiveListFragment extends Fragment {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getUid()).child("requests");
 
-        myDatabase.addValueEventListener(new ValueEventListener(){
+        myDatabase.addListenerForSingleValueEvent(new ValueEventListener(){
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 requestIDs.clear();
                 for (DataSnapshot iterateSnapshot : snapshot.getChildren()) {
@@ -108,7 +108,7 @@ public class ActiveListFragment extends Fragment {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users");
 
-        myDatabase.addValueEventListener(new ValueEventListener() {
+        myDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -132,11 +132,13 @@ public class ActiveListFragment extends Fragment {
 
                 if (!flag){
                     //empty
+                    textView.setText("No Active Partners");
                     textView.setVisibility(View.VISIBLE);
 
                 }
                 else {
                     //not empty
+
                     textView.setVisibility(View.INVISIBLE);
                     ActiveUserItemAdapter activeUserItemAdapter = new ActiveUserItemAdapter(getActivity(), R.layout.active_user_item, matchedUserList);
                     listView.setAdapter(activeUserItemAdapter);

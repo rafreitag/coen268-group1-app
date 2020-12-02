@@ -113,7 +113,7 @@ public class RequestedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
         otherReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                otherReference.child(mAuth.getCurrentUser().getUid()).setValue("SENT");
+                otherReference.child(mAuth.getCurrentUser().getUid()).setValue("ACPT");
             }
 
             @Override

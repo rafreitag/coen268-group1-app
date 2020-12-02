@@ -183,19 +183,19 @@
                 android:layout_weight="1">
 
                 <Button
-                    android:id="@+id/btn_accepted"
+                    android:id="@+id/btn_partners"
                     android:layout_width="115dp"
                     android:layout_height="120dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/darkBlue"
                     android:gravity="bottom|center_horizontal"
                     android:onClick="viewActiveUsers"
-                    android:text="Accepted"
+                    android:text="Partners"
                     android:textSize="14sp"
                     app:cornerRadius="15.0sp" />
 
                 <ImageView
-                    android:id="@+id/accepted_icon"
+                    android:id="@+id/partner_icon"
                     android:layout_width="110dp"
                     android:layout_height="79dp"
                     android:layout_gravity="center|top"
@@ -203,7 +203,7 @@
                     android:layout_marginTop="10dp"
                     android:elevation="10dp"
                     android:tintMode="src_in"
-                    app:srcCompat="@drawable/accepted_icon"
+                    app:srcCompat="@drawable/partner_icon"
                     app:tint="@color/white" />
             </FrameLayout>
 
