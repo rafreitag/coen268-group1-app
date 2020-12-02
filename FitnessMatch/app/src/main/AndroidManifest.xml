@@ -63,7 +63,7 @@
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".NewFindActivity"
-            android:label="Matches"
+            android:label="Find"
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".RequestsActivity"
