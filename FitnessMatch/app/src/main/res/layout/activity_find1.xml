@@ -6,13 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.8"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/progress_backdrop" />
+
     <ProgressBar
         android:id="@+id/determinateBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progress="40"
+        android:progress="66"
         android:progressTint="@color/darkBlue"
+        android:progressBackgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -25,6 +40,7 @@
         android:text="How do you like working out?"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/determinateBar" />
 
@@ -36,6 +52,8 @@
         android:layout_marginTop="25dp"
         android:text="running"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -46,6 +64,8 @@
         android:layout_marginStart="50dp"
         android:text="walking"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_running" />
 
@@ -56,6 +76,8 @@
         android:layout_marginStart="50dp"
         android:text="yoga"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_walking" />
 
@@ -66,6 +88,8 @@
         android:layout_marginStart="50dp"
         android:text="biking"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_yoga" />
 
@@ -76,6 +100,8 @@
         android:layout_marginStart="50dp"
         android:text="other:"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_swimming" />
 
@@ -86,6 +112,9 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
+        android:backgroundTint="@color/white"
         app:layout_constraintStart_toEndOf="@+id/cb_other"
         app:layout_constraintTop_toTopOf="@+id/cb_other" />
 
@@ -110,6 +139,8 @@
         android:layout_marginStart="50dp"
         android:text="weight lifting"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_biking" />
 
@@ -120,6 +151,8 @@
         android:layout_marginStart="50dp"
         android:text="swimming"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_weight_lifting" />
 
@@ -130,6 +163,8 @@
         android:layout_marginStart="80dp"
         android:text="hiking"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toEndOf="@+id/cb_running"
         app:layout_constraintTop_toTopOf="@+id/cb_running" />
 
@@ -139,6 +174,8 @@
         android:layout_height="wrap_content"
         android:text="pilates"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="@+id/cb_hiking"
         app:layout_constraintTop_toBottomOf="@+id/cb_hiking" />
 
@@ -148,6 +185,8 @@
         android:layout_height="wrap_content"
         android:text="circuit training"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="@+id/cb_pilates"
         app:layout_constraintTop_toBottomOf="@+id/cb_pilates" />
 
@@ -157,6 +196,8 @@
         android:layout_height="wrap_content"
         android:text="basketball"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="@+id/cb_circuit_training"
         app:layout_constraintTop_toBottomOf="@+id/cb_circuit_training" />
 
@@ -166,6 +207,8 @@
         android:layout_height="wrap_content"
         android:text="volleyball"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="@+id/cb_basketball"
         app:layout_constraintTop_toBottomOf="@+id/cb_basketball" />
 
@@ -175,6 +218,8 @@
         android:layout_height="wrap_content"
         android:text="soccer"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="@+id/cb_ultimate_frisbee"
         app:layout_constraintTop_toBottomOf="@+id/cb_ultimate_frisbee" />
 
@@ -184,6 +229,8 @@
         android:layout_height="wrap_content"
         android:text="ultimate frisbee"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
         app:layout_constraintStart_toStartOf="@+id/cb_volleyball"
         app:layout_constraintTop_toBottomOf="@+id/cb_volleyball" />
 

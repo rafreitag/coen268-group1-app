@@ -6,18 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.8"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/progress_backdrop" />
+
     <ProgressBar
         android:id="@+id/determinateBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progress="60"
+        android:progress="100"
         android:progressTint="@color/darkBlue"
+        android:progressBackgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_1"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -25,63 +40,168 @@
         android:text="How often do you like to work out per week?"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/determinateBar" />
 
-    <RadioGroup
+    <TextView
+        android:id="@+id/tv_freq_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="25dp"
-        android:orientation="vertical"
+        android:textSize="16sp"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toBottomOf="@+id/tv_1" />
 
-        <RadioButton
-            android:id="@+id/rb_frequency_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1 time"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+    <SeekBar
+        android:id="@+id/seek_bar1"
+        android:min="1"
+        android:max="7"
+        android:progress="4"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/darkBlue"
+        android:thumbTint="@color/darkBlue"
+        android:progressBackgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_freq_label" />
 
-        <RadioButton
-            android:id="@+id/rb_frequency_2"
-            android:layout_width="129dp"
-            android:layout_height="wrap_content"
-            android:text="2-3 times"
-            android:textSize="16sp" />
+    <TextView
+        android:id="@+id/tv_2"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:text="What time of day do you like to work out?"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seek_bar1" />
 
-        <RadioButton
-            android:id="@+id/rb_frequency_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="4-5 times"
-            android:textSize="16sp" />
-
-        <RadioButton
-            android:id="@+id/rb_frequency_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="6-7 times"
-            android:textSize="16sp" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/tv_time_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_2" />
+
+    <SeekBar
+        android:id="@+id/seek_bar2"
+        android:min="5"
+        android:max="23"
+        android:progress="14"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/darkBlue"
+        android:thumbTint="@color/darkBlue"
+        android:progressBackgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_time_label" />
+
+    <TextView
+        android:id="@+id/tv_3"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:text="What is your fitness level?"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seek_bar2" />
+
+    <TextView
+        android:id="@+id/tv_level_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_3" />
+
+    <SeekBar
+        android:id="@+id/seek_bar3"
+        android:min="1"
+        android:max="3"
+        android:progress="2"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/darkBlue"
+        android:thumbTint="@color/darkBlue"
+        android:progressBackgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_level_label" />
+
+<!--    <RadioGroup-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="50dp"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/seekBar"-->
+<!--        tools:ignore="MissingConstraints">-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/rb_frequency_1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="1 time"-->
+<!--            android:textSize="16sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/rb_frequency_2"-->
+<!--            android:layout_width="129dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="2-3 times"-->
+<!--            android:textSize="16sp" />-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/rb_frequency_3"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="4-5 times"-->
+<!--            android:textSize="16sp" />-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/rb_frequency_4"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="6-7 times"-->
+<!--            android:textSize="16sp" />-->
+<!--    </RadioGroup>-->
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:onClick="nextPage"
-        android:text="Next >"
         android:backgroundTint="@color/darkBlue"
+        android:onClick="updatePreferences"
+        android:text="Save Preferences"
         android:textSize="18sp"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,13 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.8"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/progress_backdrop" />
+
     <ProgressBar
         android:id="@+id/determinateBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progress="20"
+        android:progress="33"
         android:progressTint="@color/darkBlue"
+        android:progressBackgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -25,6 +40,7 @@
         android:text="Enter your current address"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/determinateBar" />
 
@@ -46,7 +62,7 @@
         android:layout_marginTop="20dp"
         android:onClick="findAddressFromLocation"
         android:text="Use current location"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         style="?android:attr/borderlessButtonStyle"
         android:textAllCaps="false"
         android:textStyle="italic"
@@ -61,6 +77,9 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="25dp"
         android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
         android:hint="Address"
         android:inputType="textPostalAddress"
         app:layout_constraintStart_toStartOf="parent"
