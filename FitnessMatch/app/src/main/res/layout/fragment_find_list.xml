@@ -23,7 +23,7 @@
         android:textColor="@color/lightGray"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <FrameLayout
         android:layout_width="match_parent"
