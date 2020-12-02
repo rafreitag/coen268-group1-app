@@ -35,7 +35,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="25dp"
         android:text="running"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="walking"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_running" />
 
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="yoga"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_walking" />
 
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="biking"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_yoga" />
 
@@ -75,17 +75,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="other:"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_swimming" />
 
     <EditText
         android:id="@+id/other_activity"
-        android:layout_width="110dp"
+        android:layout_width="80dp"
         android:layout_height="40dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/cb_other"
         app:layout_constraintTop_toTopOf="@+id/cb_other" />
 
@@ -109,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="weight lifting"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_biking" />
 
@@ -119,7 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="swimming"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_weight_lifting" />
 
@@ -127,9 +127,9 @@
         android:id="@+id/cb_hiking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="80dp"
         android:text="hiking"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/cb_running"
         app:layout_constraintTop_toTopOf="@+id/cb_running" />
 
@@ -138,7 +138,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="pilates"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/cb_hiking"
         app:layout_constraintTop_toBottomOf="@+id/cb_hiking" />
 
@@ -147,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="circuit training"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/cb_pilates"
         app:layout_constraintTop_toBottomOf="@+id/cb_pilates" />
 
@@ -156,7 +156,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="basketball"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/cb_circuit_training"
         app:layout_constraintTop_toBottomOf="@+id/cb_circuit_training" />
 
@@ -165,7 +165,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="volleyball"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/cb_basketball"
         app:layout_constraintTop_toBottomOf="@+id/cb_basketball" />
 
@@ -174,7 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="soccer"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/cb_ultimate_frisbee"
         app:layout_constraintTop_toBottomOf="@+id/cb_ultimate_frisbee" />
 
@@ -183,7 +183,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ultimate frisbee"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/cb_volleyball"
         app:layout_constraintTop_toBottomOf="@+id/cb_volleyball" />
 
