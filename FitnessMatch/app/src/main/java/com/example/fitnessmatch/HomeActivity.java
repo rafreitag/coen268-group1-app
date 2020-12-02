@@ -120,6 +120,12 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // active users activity
+    public void viewActiveUsers(View view){
+        Intent intent = new Intent(this, ActiveUserActivity.class);
+        startActivity(intent);
+    }
+
 
 
 }

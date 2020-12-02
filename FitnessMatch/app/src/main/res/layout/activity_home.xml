@@ -189,6 +189,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/darkBlue"
                     android:gravity="bottom|center_horizontal"
+                    android:onClick="viewActiveUsers"
                     android:text="Accepted"
                     android:textSize="14sp"
                     app:cornerRadius="15.0sp" />
