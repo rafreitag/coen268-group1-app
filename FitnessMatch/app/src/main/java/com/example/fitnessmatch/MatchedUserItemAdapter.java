@@ -22,16 +22,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
     private Context mContext;
     private int mResource;
+    HashSet<Integer> sentList;
 
     public MatchedUserItemAdapter(Context context, int resource,  @NonNull ArrayList<MatchedUserItem> objects) {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;
+        sentList = new HashSet<>();
     }
 
     @NonNull
@@ -69,6 +73,15 @@ public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
             tv_match_score.setTextColor(mContext.getColor(R.color.red));
         }
 
+        if (sentList.contains(new Integer(position))){
+            btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.lightGray));
+            btn_send_request.setText("SENT");
+        }
+        else{
+            btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.darkBlue));
+            btn_send_request.setText("SEND");
+        }
+
         //button tagging
         //https://guides.codepath.com/android/Using-an-ArrayAdapter-with-ListView
         btn_send_request.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +91,9 @@ public class MatchedUserItemAdapter extends ArrayAdapter<MatchedUserItem> {
                 sendRequestTo(user_id);
                 //verification button
                 //change color and stuff
+                btn_send_request.setBackgroundTintList(mContext.getColorStateList(R.color.lightGray));
+                btn_send_request.setText("SENT");
+                sentList.add(position);
                 //toast?
             }
         });

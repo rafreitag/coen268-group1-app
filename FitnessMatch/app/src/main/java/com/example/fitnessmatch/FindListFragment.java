@@ -51,7 +51,9 @@ public class FindListFragment extends Fragment {
     }
 
     public void populateListArray(UserMatchDataDBHelper dbHelper){
+        String TAG = "populateListArray";
 
+        Log.i(TAG, "populating list array");
 
         ArrayList<MatchedUserItem> matchedUserList = new ArrayList<>();
 
@@ -67,12 +69,11 @@ public class FindListFragment extends Fragment {
         cursor.moveToFirst();
 
 
-        Log.i("LIST_FRAG", "SELECT * FROM " + UserMatchDataContract.MatchData.TABLE_NAME +
-                " ORDER BY CAST(" + order + " AS INTEGER) DESC");
+        //Log.i("LIST_FRAG", "SELECT * FROM " + UserMatchDataContract.MatchData.TABLE_NAME +
+        //          " ORDER BY CAST(" + order + " AS INTEGER) DESC");
 
         //populate the list with whatever is in the local database
         while(!cursor.isAfterLast()){
-            Log.i("LIST_FRAG", "HAS SOMETHING");
             int index = cursor.getColumnIndexOrThrow(UserMatchDataContract.MatchData.USER_ID);
             String user_id = cursor.getString(index);
 
@@ -104,7 +105,8 @@ public class FindListFragment extends Fragment {
 
         DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("users");
 
-        myDatabase.addValueEventListener(new ValueEventListener() {
+        Log.i(TAG, "generating local match database");
+                myDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
