@@ -13,8 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessMatch">
-        <activity android:name=".ActiveUserActivity"
-            android:label="Partners"></activity>
+
         <activity
             android:name=".WorkoutHistoryActivity"
             android:label="History"
@@ -74,6 +73,10 @@
             android:name=".RequestsActivity"
             android:label="Requests"
             android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".ActiveUserActivity"
+            android:label="Partners"
+            android:parentActivityName=".HomeActivity"/>
     </application>
 
 </manifest>
