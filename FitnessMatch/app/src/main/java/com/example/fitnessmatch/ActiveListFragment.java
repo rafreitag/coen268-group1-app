@@ -132,7 +132,7 @@ public class ActiveListFragment extends Fragment {
 
                 if (!flag){
                     //empty
-                    textView.setText("No Active Partners");
+                    textView.setText("No Partners");
                     textView.setVisibility(View.VISIBLE);
 
                 }
