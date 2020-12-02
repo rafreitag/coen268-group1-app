@@ -49,12 +49,6 @@
             android:name=".Find2Activity"
             android:label="@string/find_name"></activity>
         <activity
-            android:name=".Find3Activity"
-            android:label="@string/find_name"></activity>
-        <activity
-            android:name=".Find4Activity"
-            android:label="@string/find_name"></activity>
-        <activity
             android:name=".EditProgress"
             android:label="@string/edit_name"></activity>
         <activity

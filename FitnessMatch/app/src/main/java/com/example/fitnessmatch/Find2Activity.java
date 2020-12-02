@@ -24,7 +24,6 @@ public class Find2Activity extends AppCompatActivity {
 
     private TextView tv_freq_label, tv_time_label, tv_level_label;
     private SeekBar seek_bar1, seek_bar2, seek_bar3;
-//    private RadioButton frequency1, frequency2, frequency3, frequency4;
     private int frequency, pref_time, level;
 
     private Preferences preferences;
@@ -62,12 +61,6 @@ public class Find2Activity extends AppCompatActivity {
 
         tv_level_label = findViewById(R.id.tv_level_label);
         tv_level_label.setText("Intermediate");
-
-        // How often do you want to work out per week?
-//        frequency1 = findViewById(R.id.rb_frequency_1);
-//        frequency2 = findViewById(R.id.rb_frequency_2);
-//        frequency3 = findViewById(R.id.rb_frequency_3);
-//        frequency4 = findViewById(R.id.rb_frequency_4);
     }
 
     SeekBar.OnSeekBarChangeListener seekBar1ChangeListener = new SeekBar.OnSeekBarChangeListener() {
@@ -124,16 +117,18 @@ public class Find2Activity extends AppCompatActivity {
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             // updated continuously as the user slides the thumb
             String str_level = "";
+            int temp_level = 0;
             if(progress == 1) {
                 str_level = "Beginner";
-                level = 1;
+                temp_level = 1;
             } else if(progress == 2) {
                 str_level = "Intermediate";
-                level = 2;
+                temp_level = 2;
             } else if(progress == 3) {
                 str_level = "Advanced";
-                level = 3;
+                temp_level = 3;
             }
+            level = temp_level;
             tv_level_label.setText(str_level);
         }
 
@@ -168,15 +163,6 @@ public class Find2Activity extends AppCompatActivity {
         preferences.setFrequency(frequency);
         preferences.setPref_time(pref_time);
         preferences.setLevel(level);
-
-//        if(frequency1.isChecked())
-//            preferences.setFrequency(1);
-//        else if(frequency2.isChecked())
-//            preferences.setFrequency(2);
-//        else if(frequency3.isChecked())
-//            preferences.setFrequency(3);
-//        else if(frequency4.isChecked())
-//            preferences.setFrequency(4);
     }
 
     // Adds all preferences (from page 1 and page 2 of find) to Firebase and then redirects to home page
@@ -194,7 +180,6 @@ public class Find2Activity extends AppCompatActivity {
         usersRef.child("preferences").setValue(preferences);
 
         // Go to home page
-
         Toast.makeText(this, "Preferences Successfully Updated", Toast.LENGTH_SHORT).show();
 
         Intent a = new Intent(this, HomeActivity.class);
