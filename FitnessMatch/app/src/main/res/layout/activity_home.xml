@@ -57,20 +57,21 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="294dp"
-        android:layout_height="447dp"
-        android:layout_marginBottom="112dp"
-        android:gravity="center"
+        android:layout_width="316dp"
+        android:layout_height="483dp"
+        android:gravity="center|center_horizontal|center_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:layout_constraintVertical_bias="0.425">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <FrameLayout
@@ -102,7 +103,7 @@
             </FrameLayout>
 
             <Space
-                android:layout_width="20dp"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
@@ -140,7 +141,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <FrameLayout
@@ -172,7 +173,7 @@
             </FrameLayout>
 
             <Space
-                android:layout_width="20dp"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
@@ -242,7 +243,7 @@
             </FrameLayout>
 
             <Space
-                android:layout_width="20dp"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
